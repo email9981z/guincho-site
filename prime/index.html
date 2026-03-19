@@ -2,13 +2,23 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#0F1419">
     <title>Prime Guinchos | Auto Socorro 24h Rápido e Seguro</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            touch-action: manipulation;
         }
 
         :root {
@@ -27,16 +37,19 @@
             color: var(--text-light);
             line-height: 1.6;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         /* Header */
         .header {
             background-color: var(--dark-bg);
-            padding: 1.5rem 2rem;
+            padding: 1rem 1rem;
             position: sticky;
             top: 0;
             z-index: 100;
             border-bottom: 2px solid var(--accent-red);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
         }
 
         .header-container {
@@ -45,23 +58,37 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 1rem;
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: bold;
             color: var(--text-light);
+            white-space: nowrap;
         }
 
         .btn-header {
             background-color: transparent;
             color: var(--text-light);
             border: 1px solid var(--text-secondary);
-            padding: 0.75rem 1.5rem;
+            padding: 0.6rem 1rem;
             border-radius: 4px;
             cursor: pointer;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             transition: all 0.3s ease;
+            white-space: nowrap;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-header:active {
+            background-color: var(--primary-color);
+            color: #000;
+            border-color: var(--primary-color);
+            transform: scale(0.98);
         }
 
         .btn-header:hover {
@@ -73,25 +100,25 @@
         /* Hero Section */
         .hero {
             background: linear-gradient(135deg, #0F1419 0%, #1a2332 100%);
-            padding: 4rem 2rem;
+            padding: 2rem 1rem;
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            grid-template-columns: 1fr;
+            gap: 2rem;
             align-items: center;
-            min-height: 600px;
+            min-height: auto;
         }
 
         .hero-content {
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 1.2rem;
         }
 
         .hero-badges {
             display: flex;
-            gap: 1rem;
+            gap: 0.8rem;
             flex-wrap: wrap;
         }
 
@@ -99,16 +126,16 @@
             background-color: transparent;
             border: 1px solid var(--primary-color);
             color: var(--primary-color);
-            padding: 0.5rem 1rem;
+            padding: 0.4rem 0.8rem;
             border-radius: 20px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 600;
             display: inline-block;
             width: fit-content;
         }
 
         .hero-title {
-            font-size: 3.5rem;
+            font-size: 2rem;
             font-weight: 900;
             line-height: 1.2;
             color: var(--text-light);
@@ -116,23 +143,33 @@
         }
 
         .hero-subtitle {
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: var(--text-secondary);
-            max-width: 400px;
+            max-width: 100%;
+            line-height: 1.5;
         }
 
         .btn-primary {
             background-color: var(--primary-color);
             color: #000;
             border: none;
-            padding: 1rem 2rem;
+            padding: 0.9rem 1.5rem;
             border-radius: 4px;
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 700;
             cursor: pointer;
-            width: fit-content;
+            width: 100%;
             transition: all 0.3s ease;
             text-transform: uppercase;
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-primary:active {
+            background-color: #ff9500;
+            transform: scale(0.98);
         }
 
         .btn-primary:hover {
@@ -142,7 +179,7 @@
         }
 
         .hero-footer {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--text-secondary);
         }
 
@@ -154,14 +191,16 @@
 
         .image-carousel {
             display: flex;
-            gap: 1rem;
+            gap: 0.8rem;
             overflow-x: auto;
-            padding: 1rem;
+            padding: 1rem 0.5rem;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
         }
 
         .carousel-item {
-            width: 150px;
-            height: 150px;
+            width: 120px;
+            height: 120px;
             background: linear-gradient(135deg, #2a3f5f 0%, #1a2332 100%);
             border-radius: 8px;
             flex-shrink: 0;
@@ -171,19 +210,20 @@
         /* Why Choose Section */
         .why-choose {
             background-color: var(--dark-bg);
-            padding: 4rem 2rem;
+            padding: 2.5rem 1rem;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .section-title {
-            font-size: 2.5rem;
+            font-size: 1.8rem;
             font-weight: 900;
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             text-transform: uppercase;
             position: relative;
             padding-bottom: 1rem;
+            line-height: 1.3;
         }
 
         .section-title::after {
@@ -192,23 +232,28 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
+            width: 80px;
             height: 3px;
             background-color: var(--primary-color);
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
         }
 
         .feature-card {
             background-color: var(--dark-card);
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: 8px;
             border: 1px solid #2a3f5f;
             transition: all 0.3s ease;
+        }
+
+        .feature-card:active {
+            border-color: var(--primary-color);
+            transform: scale(0.98);
         }
 
         .feature-card:hover {
@@ -217,25 +262,26 @@
         }
 
         .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: 2.2rem;
+            margin-bottom: 0.8rem;
         }
 
         .feature-card h3 {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             margin-bottom: 0.5rem;
             color: var(--text-light);
         }
 
         .feature-card p {
             color: var(--text-secondary);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
         }
 
         /* Testimonials Section */
         .testimonials {
             background-color: var(--dark-bg);
-            padding: 4rem 2rem;
+            padding: 2.5rem 1rem;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -243,40 +289,46 @@
         .testimonials-subtitle {
             text-align: center;
             color: var(--text-secondary);
-            margin-bottom: 2rem;
-            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
         }
 
         .rating-display {
             display: flex;
-            justify-content: flex-end;
+            justify-content: center;
             align-items: center;
-            gap: 1rem;
+            gap: 0.8rem;
             margin-bottom: 2rem;
-            font-size: 1.2rem;
+            font-size: 1rem;
         }
 
         .stars {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
         }
 
         .rating-text {
             color: var(--text-secondary);
             font-weight: 600;
+            font-size: 0.95rem;
         }
 
         .testimonials-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
         }
 
         .testimonial-card {
             background-color: var(--dark-card);
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: 8px;
             border: 1px solid #2a3f5f;
             transition: all 0.3s ease;
+        }
+
+        .testimonial-card:active {
+            border-color: var(--primary-color);
+            transform: scale(0.98);
         }
 
         .testimonial-card:hover {
@@ -285,26 +337,27 @@
         }
 
         .stars-small {
-            font-size: 1rem;
-            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
         }
 
         .testimonial-text {
             color: var(--text-secondary);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
             font-style: italic;
-            line-height: 1.6;
+            line-height: 1.5;
+            font-size: 0.9rem;
         }
 
         .testimonial-author {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 0.8rem;
         }
 
         .author-avatar {
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             background: linear-gradient(135deg, var(--primary-color) 0%, #ff9500 100%);
             border-radius: 50%;
             flex-shrink: 0;
@@ -312,13 +365,13 @@
 
         .author-info h4 {
             color: var(--text-light);
-            font-size: 0.95rem;
-            margin-bottom: 0.25rem;
+            font-size: 0.9rem;
+            margin-bottom: 0.2rem;
         }
 
         .author-info p {
             color: var(--primary-color);
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 600;
             text-transform: uppercase;
         }
@@ -330,42 +383,54 @@
         /* CTA Section */
         .cta-section {
             background: linear-gradient(135deg, var(--primary-color) 0%, #ff9500 100%);
-            padding: 4rem 2rem;
+            padding: 2.5rem 1rem;
             text-align: center;
             color: #000;
         }
 
         .cta-section h2 {
-            font-size: 2.5rem;
+            font-size: 1.8rem;
             font-weight: 900;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             text-transform: uppercase;
+            line-height: 1.3;
         }
 
         .cta-section p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
             color: #333;
         }
 
         .cta-buttons {
             display: flex;
-            gap: 1.5rem;
+            flex-direction: column;
+            gap: 1rem;
             justify-content: center;
-            flex-wrap: wrap;
         }
 
         .btn-secondary {
             background-color: transparent;
             color: #000;
             border: 2px solid #000;
-            padding: 1rem 2rem;
+            padding: 0.9rem 1.5rem;
             border-radius: 4px;
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
             text-transform: uppercase;
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .btn-secondary:active {
+            background-color: #000;
+            color: var(--primary-color);
+            transform: scale(0.98);
         }
 
         .btn-secondary:hover {
@@ -377,13 +442,23 @@
             background-color: #000;
             color: var(--text-light);
             border: none;
-            padding: 1rem 2rem;
+            padding: 0.9rem 1.5rem;
             border-radius: 4px;
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
             text-transform: uppercase;
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .btn-dark:active {
+            background-color: #333;
+            transform: scale(0.98);
         }
 
         .btn-dark:hover {
@@ -395,27 +470,36 @@
         .footer {
             background-color: var(--dark-bg);
             border-top: 2px solid var(--accent-red);
-            padding: 2rem;
+            padding: 1.5rem 1rem;
             text-align: center;
             color: var(--text-secondary);
         }
 
         .footer p {
             margin-bottom: 1rem;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         .footer-links {
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            gap: 1.5rem;
+            flex-wrap: wrap;
         }
 
         .footer-links a {
             color: var(--primary-color);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             transition: color 0.3s ease;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-links a:active {
+            color: var(--text-light);
+            transform: scale(0.98);
         }
 
         .footer-links a:hover {
@@ -425,15 +509,15 @@
         /* Floating Action Button */
         .fab {
             position: fixed;
-            bottom: 2rem;
-            right: 2rem;
+            bottom: 1.5rem;
+            right: 1rem;
             background-color: var(--accent-green);
             color: #000;
             border: none;
-            width: 60px;
-            height: 60px;
+            width: 56px;
+            height: 56px;
             border-radius: 50%;
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             font-weight: 700;
             cursor: pointer;
             box-shadow: 0 4px 12px rgba(0, 255, 0, 0.3);
@@ -444,6 +528,12 @@
             text-align: center;
             padding: 0.5rem;
             z-index: 1000;
+            min-height: 56px;
+            min-width: 56px;
+        }
+
+        .fab:active {
+            transform: scale(0.95);
         }
 
         .fab:hover {
@@ -483,94 +573,129 @@
             }
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
+        /* Tablet - 768px */
+        @media (min-width: 768px) {
+            .header-container {
+                padding: 0 2rem;
+            }
+
             .hero {
-                grid-template-columns: 1fr;
-                padding: 2rem 1rem;
-                min-height: auto;
+                grid-template-columns: 1fr 1fr;
+                padding: 3rem 2rem;
+                gap: 2rem;
             }
 
             .hero-title {
-                font-size: 2.5rem;
-            }
-
-            .hero-badges {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .badge {
-                width: 100%;
-                text-align: center;
+                font-size: 2.8rem;
             }
 
             .section-title {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
 
             .features-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
             }
 
             .testimonials-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
             }
 
             .cta-buttons {
-                flex-direction: column;
+                flex-direction: row;
+                gap: 1.5rem;
             }
 
-            .btn-primary,
             .btn-secondary,
             .btn-dark {
-                width: 100%;
+                width: auto;
+                flex: 1;
             }
 
-            .cta-section h2 {
-                font-size: 2rem;
+            .why-choose,
+            .testimonials,
+            .cta-section {
+                padding: 3rem 2rem;
             }
 
-            .rating-display {
-                justify-content: center;
-            }
-
-            .header-container {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .btn-header {
-                width: 100%;
+            .carousel-item {
+                width: 150px;
+                height: 150px;
             }
         }
 
-        @media (max-width: 480px) {
+        /* Desktop - 1024px */
+        @media (min-width: 1024px) {
             .hero-title {
-                font-size: 2rem;
+                font-size: 3.5rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .testimonials-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .fab {
+                bottom: 2rem;
+                right: 2rem;
+                width: 60px;
+                height: 60px;
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Landscape mode */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .hero {
+                min-height: auto;
+                padding: 1.5rem;
+            }
+
+            .hero-title {
+                font-size: 1.8rem;
             }
 
             .section-title {
                 font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .features-grid,
+            .testimonials-grid {
+                gap: 1rem;
             }
 
             .feature-card,
             .testimonial-card {
-                padding: 1.5rem;
+                padding: 1rem;
+            }
+        }
+
+        /* Notch support */
+        @supports (padding: max(0px)) {
+            .header {
+                padding-top: max(1rem, env(safe-area-inset-top));
+                padding-bottom: 1rem;
+                padding-left: max(1rem, env(safe-area-inset-left));
+                padding-right: max(1rem, env(safe-area-inset-right));
             }
 
-            .cta-section {
-                padding: 2rem 1rem;
-            }
-
-            .cta-section h2 {
-                font-size: 1.5rem;
+            .footer {
+                padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
             }
 
             .fab {
-                width: 50px;
-                height: 50px;
-                font-size: 0.7rem;
+                bottom: max(1.5rem, env(safe-area-inset-bottom));
+                right: max(1rem, env(safe-area-inset-right));
             }
         }
     </style>
@@ -580,7 +705,7 @@
     <header class="header">
         <div class="header-container">
             <div class="logo">Prime Guinchos</div>
-            <button class="btn-header" onclick="handleAction('header')">Pedir Socorro Agora</button>
+            <button class="btn-header" onclick="handleAction('header')">Pedir Socorro</button>
         </div>
     </header>
 
@@ -588,11 +713,11 @@
     <section class="hero">
         <div class="hero-content">
             <div class="hero-badges">
-                <span class="badge">⚡ CHEGADA RÁPIDA</span>
+                <span class="badge">⚡ RÁPIDA</span>
                 <span class="badge">🛡️ SEGURO</span>
                 <span class="badge">⏰ 24/7</span>
             </div>
-            <h1 class="hero-title">PRIME GUINCHOS:<br>ATENDIMENTO 24<br>HORAS</h1>
+            <h1 class="hero-title">PRIME GUINCHOS: ATENDIMENTO 24H</h1>
             <p class="hero-subtitle">Seu carro ou moto parou? Não se preocupe. Garantimos agilidade, segurança total e preço justo no seu resgate.</p>
             <button class="btn-primary" onclick="handleAction('call')">CHAMAR GUINCHO AGORA 🚗</button>
             <p class="hero-footer">✓ Equipe disponível agora</p>
@@ -610,27 +735,27 @@
 
     <!-- Why Choose Section -->
     <section class="why-choose">
-        <h2 class="section-title">POR QUE ESCOLHER A PRIME GUINCHOS?</h2>
+        <h2 class="section-title">POR QUE ESCOLHER?</h2>
         <div class="features-grid">
             <div class="feature-card">
                 <div class="feature-icon">⏱️</div>
                 <h3>Agilidade Extrema</h3>
-                <p>Sabemos que você tem pressa. Nossa frota está posicionada estrategicamente para chegar rápido.</p>
+                <p>Nossa frota está posicionada estrategicamente para chegar rápido.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">🛡️</div>
                 <h3>Segurança Total</h3>
-                <p>Profissionais treinados para manusear seu veículo (carro ou moto) sem causar danos.</p>
+                <p>Profissionais treinados para manusear seu veículo sem causar danos.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">🗺️</div>
                 <h3>Cobertura Abrangente</h3>
-                <p>Atendemos na cidade e nas principais rodovias. Onde você estiver, nós buscamos.</p>
+                <p>Atendemos na cidade e nas principais rodovias.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">💰</div>
                 <h3>Preço Justo</h3>
-                <p>Sem surpresas na hora do pagamento. Transparência total no orçamento via WhatsApp.</p>
+                <p>Transparência total no orçamento via WhatsApp.</p>
             </div>
         </div>
     </section>
@@ -648,7 +773,7 @@
         <div class="testimonials-grid">
             <div class="testimonial-card">
                 <div class="stars-small">⭐⭐⭐⭐⭐</div>
-                <p class="testimonial-text">"Minha moto parou na Dutra de noite. O pessoal da Prime Guinchos chegou em 20 minutos. Recomendo demais!"</p>
+                <p class="testimonial-text">"Minha moto parou na Dutra de noite. Chegaram em 20 minutos. Recomendo demais!"</p>
                 <div class="testimonial-author">
                     <div class="author-avatar"></div>
                     <div class="author-info">
@@ -660,7 +785,7 @@
 
             <div class="testimonial-card">
                 <div class="stars-small">⭐⭐⭐⭐⭐</div>
-                <p class="testimonial-text">"Atendimento excelente. Fiquei super nervosa quando o carro quebrou, mas o motorista foi muito educado e rápido."</p>
+                <p class="testimonial-text">"Atendimento excelente. O motorista foi muito educado e rápido."</p>
                 <div class="testimonial-author">
                     <div class="author-avatar"></div>
                     <div class="author-info">
@@ -672,7 +797,7 @@
 
             <div class="testimonial-card">
                 <div class="stars-small">⭐⭐⭐⭐⭐</div>
-                <p class="testimonial-text">"Profissionalismo total. Cuidaram muito bem do meu carro. Preço justo pelo serviço de qualidade."</p>
+                <p class="testimonial-text">"Profissionalismo total. Cuidaram muito bem do meu carro. Preço justo!"</p>
                 <div class="testimonial-author">
                     <div class="author-avatar"></div>
                     <div class="author-info">
@@ -690,7 +815,7 @@
         <p>Equipe pronta para sair agora. Atendimento imediato.</p>
         <div class="cta-buttons">
             <button class="btn-secondary" onclick="handleAction('phone')">📞 (11) 98962-4627</button>
-            <button class="btn-dark" onclick="handleAction('whatsapp')">SOLICITAR SOCORRO VIA WHATSAPP 📲</button>
+            <button class="btn-dark" onclick="handleAction('whatsapp')">WHATSAPP 📲</button>
         </div>
     </section>
 
@@ -704,7 +829,7 @@
     </footer>
 
     <!-- Floating Action Button -->
-    <button class="fab" onclick="handleAction('fab')">Pedir Socorro Agora</button>
+    <button class="fab" onclick="handleAction('fab')">📞</button>
 
     <script>
         // Função para lidar com ações dos botões
@@ -726,16 +851,18 @@
             notification.textContent = message;
             notification.style.cssText = `
                 position: fixed;
-                bottom: 100px;
+                bottom: 80px;
                 right: 20px;
                 background-color: #00ff00;
                 color: #000;
-                padding: 1rem 1.5rem;
+                padding: 0.8rem 1.2rem;
                 border-radius: 4px;
                 font-weight: 600;
                 z-index: 999;
                 animation: slideIn 0.3s ease;
                 box-shadow: 0 4px 12px rgba(0, 255, 0, 0.3);
+                font-size: 0.9rem;
+                max-width: 90vw;
             `;
 
             document.body.appendChild(notification);
@@ -781,27 +908,48 @@
                 observer.observe(el);
             });
 
-            // Efeito hover nos cards
-            document.querySelectorAll('.feature-card, .testimonial-card').forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-5px)';
-                });
+            // Efeito hover nos cards (desktop)
+            if (window.innerWidth >= 768) {
+                document.querySelectorAll('.feature-card, .testimonial-card').forEach(card => {
+                    card.addEventListener('mouseenter', function() {
+                        this.style.transform = 'translateY(-5px)';
+                    });
 
-                card.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0)';
+                    card.addEventListener('mouseleave', function() {
+                        this.style.transform = 'translateY(0)';
+                    });
                 });
-            });
+            }
 
             // Shadow no header ao fazer scroll
             window.addEventListener('scroll', function() {
                 const header = document.querySelector('.header');
-                if (window.scrollY > 100) {
+                if (window.scrollY > 50) {
                     header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.5)';
                 } else {
                     header.style.boxShadow = 'none';
                 }
             });
+
+            // Prevenir zoom em inputs
+            document.addEventListener('touchstart', function(e) {
+                if (e.touches.length > 1) {
+                    e.preventDefault();
+                }
+            }, false);
+
+            // Detectar orientação
+            window.addEventListener('orientationchange', function() {
+                setTimeout(() => {
+                    window.scrollTo(0, 0);
+                }, 100);
+            });
         });
+
+        // Suporte a PWA
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js').catch(() => {});
+        }
     </script>
 </body>
 </html>
