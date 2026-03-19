@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PrimeGuincho 24h - Atendimento Rápido via WhatsApp</title>
+    <title>Prime Guinchos | Auto Socorro 24h Rápido e Seguro</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -15,22 +15,22 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #FFFFFF;
-            color: #1A3A52;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
+            background-color: #0F1419;
+            color: #FFFFFF;
+            line-height: 1.6;
         }
 
         /* Animações */
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(10px);
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
@@ -38,388 +38,757 @@
             }
         }
 
-        @keyframes spinSlow {
+        @keyframes slideInLeft {
             from {
-                transform: rotate(0deg);
+                opacity: 0;
+                transform: translateX(-30px);
             }
             to {
-                transform: rotate(360deg);
+                opacity: 1;
+                transform: translateX(0);
             }
         }
 
-        @keyframes pulseSubtle {
+        @keyframes pulse {
             0%, 100% {
-                box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.4);
+                opacity: 1;
             }
             50% {
-                box-shadow: 0 0 0 10px rgba(255, 107, 53, 0);
+                opacity: 0.7;
             }
         }
 
-        @keyframes progressFill {
-            from {
-                width: 0%;
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
             }
-            to {
-                width: 100%;
+            50% {
+                transform: translateY(-10px);
             }
         }
 
-        /* Container Principal */
-        .container {
-            max-width: 500px;
-            width: 100%;
+        /* Header/Navbar */
+        header {
+            background: rgba(15, 20, 25, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 165, 0, 0.1);
             display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        /* Header com Logo */
-        .header {
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            animation: fadeIn 0.6s ease-out;
-            animation-delay: 100ms;
-            animation-fill-mode: both;
-        }
-
-        .logo-container {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 1rem;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .logo {
-            background: linear-gradient(135deg, #FF6B35 0%, #FF8C5A 100%);
-            padding: 1rem;
-            border-radius: 50%;
-            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
-            animation: spinSlow 3s linear infinite;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 80px;
-            height: 80px;
-        }
-
-        .logo svg {
-            width: 48px;
-            height: 48px;
-            color: white;
-        }
-
-        h1 {
             font-family: 'Poppins', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #1A3A52;
-            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #FFA500;
         }
 
-        .subtitle {
-            font-size: 1.125rem;
-            color: #666666;
-            font-weight: 500;
-        }
-
-        /* Card de Informações */
-        .info-card {
-            background-color: #F5F5F5;
-            border-radius: 0.5rem;
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-            animation: fadeIn 0.6s ease-out;
-            animation-delay: 200ms;
-            animation-fill-mode: both;
-        }
-
-        .info-item {
+        .header-actions {
             display: flex;
             gap: 1rem;
-            align-items: flex-start;
+            align-items: center;
         }
 
-        .info-icon {
-            background-color: rgba(255, 107, 53, 0.1);
-            padding: 0.75rem;
-            border-radius: 0.5rem;
-            flex-shrink: 0;
+        .phone-link {
             display: flex;
             align-items: center;
-            justify-content: center;
-            width: 48px;
-            height: 48px;
-        }
-
-        .info-icon.accent {
-            background-color: rgba(76, 175, 80, 0.1);
-        }
-
-        .info-icon.secondary {
-            background-color: rgba(26, 58, 82, 0.1);
-        }
-
-        .info-icon svg {
-            width: 24px;
-            height: 24px;
-        }
-
-        .info-content h3 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
+            gap: 0.5rem;
+            color: #FFFFFF;
+            text-decoration: none;
             font-weight: 600;
-            color: #1A3A52;
-            margin-bottom: 0.25rem;
+            transition: color 0.3s;
         }
 
-        .info-content p {
-            font-size: 0.875rem;
-            color: #666666;
-            margin: 0;
+        .phone-link:hover {
+            color: #FFA500;
         }
 
-        /* Barra de Progresso */
-        .progress-section {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-            animation: fadeIn 0.6s ease-out;
-            animation-delay: 300ms;
-            animation-fill-mode: both;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 8px;
-            background-color: #E0E0E0;
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #FF6B35 0%, #FF8C5A 100%);
-            border-radius: 4px;
-            animation: progressFill 3s ease-out forwards;
-        }
-
-        .progress-text {
-            text-align: center;
-            font-size: 0.875rem;
-            color: #666666;
-        }
-
-        .progress-text .time-left {
-            font-weight: 600;
-            color: #FF6B35;
-        }
-
-        /* Botão CTA */
-        .cta-button {
-            background: linear-gradient(135deg, #FF6B35 0%, #FF8C5A 100%);
-            color: white;
+        .btn-header {
+            background: #FFA500;
+            color: #0F1419;
             border: none;
-            padding: 0.75rem 1rem;
+            padding: 0.75rem 1.5rem;
             border-radius: 0.5rem;
-            font-size: 1rem;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-header:hover {
+            background: #FFB84D;
+            transform: scale(1.05);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0F1419 0%, #1a2332 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255, 165, 0, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(255, 165, 0, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 2;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: rgba(255, 165, 0, 0.1);
+            border: 1px solid #FFA500;
+            color: #FFA500;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .badge::before {
+            content: '⚡';
+        }
+
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            color: #FFFFFF;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #B0B0B0;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .btn-primary {
+            background: #FFA500;
+            color: #0F1419;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 0.5rem;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .btn-primary:hover {
+            background: #FFB84D;
+            transform: scale(1.05);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #FFFFFF;
+            border: 2px solid #FFA500;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .btn-secondary:hover {
+            background: #FFA500;
+            color: #0F1419;
+        }
+
+        .hero-note {
+            font-size: 0.9rem;
+            color: #808080;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
-            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
-            animation: fadeIn 0.6s ease-out, pulseSubtle 2s infinite;
-            animation-delay: 400ms, 400ms;
-            animation-fill-mode: both;
         }
 
-        .cta-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 16px rgba(255, 107, 53, 0.4);
+        .hero-note::before {
+            content: '✓';
+            color: #4CAF50;
+            font-weight: bold;
         }
 
-        .cta-button:active {
-            transform: scale(0.95);
+        /* Benefits Section */
+        .benefits {
+            background: #0F1419;
+            padding: 4rem 2rem;
         }
 
-        .cta-button svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        /* Texto Informativo */
-        .info-text {
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
             text-align: center;
-            font-size: 0.75rem;
-            color: #666666;
-            animation: fadeIn 0.6s ease-out;
-            animation-delay: 500ms;
-            animation-fill-mode: both;
+            margin-bottom: 3rem;
+            color: #FFFFFF;
         }
 
-        /* Responsivo */
-        @media (max-width: 640px) {
-            h1 {
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .benefit-card {
+            background: linear-gradient(135deg, #1a2332 0%, #0F1419 100%);
+            border: 1px solid rgba(255, 165, 0, 0.2);
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            transition: all 0.3s;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .benefit-card:nth-child(1) { animation-delay: 0.1s; }
+        .benefit-card:nth-child(2) { animation-delay: 0.2s; }
+        .benefit-card:nth-child(3) { animation-delay: 0.3s; }
+        .benefit-card:nth-child(4) { animation-delay: 0.4s; }
+
+        .benefit-card:hover {
+            border-color: #FFA500;
+            background: linear-gradient(135deg, #1a2332 0%, #1a2332 100%);
+            transform: translateY(-10px);
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: #FFFFFF;
+        }
+
+        .benefit-card p {
+            color: #B0B0B0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: linear-gradient(135deg, #1a2332 0%, #0F1419 100%);
+            padding: 4rem 2rem;
+        }
+
+        .testimonials-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .testimonials-header h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: #FFFFFF;
+        }
+
+        .testimonials-header p {
+            color: #B0B0B0;
+            font-size: 1rem;
+        }
+
+        .rating {
+            color: #FFA500;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            letter-spacing: 0.2rem;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 165, 0, 0.05);
+            border: 1px solid rgba(255, 165, 0, 0.2);
+            padding: 2rem;
+            border-radius: 1rem;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .testimonial-card:nth-child(1) { animation-delay: 0.1s; }
+        .testimonial-card:nth-child(2) { animation-delay: 0.2s; }
+        .testimonial-card:nth-child(3) { animation-delay: 0.3s; }
+
+        .testimonial-text {
+            color: #E0E0E0;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #FFA500, #FFB84D);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #0F1419;
+            font-size: 1.25rem;
+        }
+
+        .author-info h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 0.25rem;
+        }
+
+        .author-info p {
+            font-size: 0.85rem;
+            color: #FFA500;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #FFA500 0%, #FFB84D 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            color: #0F1419;
+        }
+
+        .cta-section h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-dark {
+            background: #0F1419;
+            color: #FFA500;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .btn-dark:hover {
+            background: #1a2332;
+            transform: scale(1.05);
+        }
+
+        .btn-light {
+            background: rgba(255, 255, 255, 0.2);
+            color: #0F1419;
+            border: 2px solid #0F1419;
+            padding: 0.75rem 1.75rem;
+            border-radius: 0.5rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .btn-light:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #0F1419;
+            border-top: 1px solid rgba(255, 165, 0, 0.1);
+            padding: 2rem;
+            text-align: center;
+            color: #808080;
+            font-size: 0.9rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: #808080;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #FFA500;
+        }
+
+        /* Floating WhatsApp Button */
+        .float-whatsapp {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s;
+            z-index: 999;
+            animation: float 3s ease-in-out infinite;
+            text-decoration: none;
+        }
+
+        .float-whatsapp:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.6);
+        }
+
+        .float-whatsapp svg {
+            width: 32px;
+            height: 32px;
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero h1 {
                 font-size: 2rem;
             }
 
-            .subtitle {
+            .hero p {
                 font-size: 1rem;
             }
 
-            .info-card {
-                padding: 1rem;
+            .section-title {
+                font-size: 1.75rem;
             }
 
-            .container {
-                gap: 1.5rem;
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .benefits-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .cta-buttons .btn-dark,
+            .cta-buttons .btn-light {
+                width: 100%;
+                justify-content: center;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Header com Logo -->
-        <div class="header">
-            <div class="logo-container">
-                <div class="logo">
-                    <!-- Ícone de Guincho (Truck) -->
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M10 17h6M4 17h2m12 0h2M5 20h14a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2z"></path>
-                        <circle cx="6.5" cy="17" r="1.5"></circle>
-                        <circle cx="17.5" cy="17" r="1.5"></circle>
-                    </svg>
-                </div>
-            </div>
-            <h1>PrimeGuincho 24h</h1>
-            <p class="subtitle">Atendimento Rápido via WhatsApp</p>
+    <!-- Header -->
+    <header>
+        <div class="logo">PRIME GUINCHOS</div>
+        <div class="header-actions">
+            <a href="tel:11989624627" class="phone-link">
+                <span>📞</span>
+                <span>(11) 98962-4627</span>
+            </a>
+            <button class="btn-header" onclick="openWhatsApp()">
+                <span>💬</span>
+                Pedir Socorro Agora
+            </button>
         </div>
+    </header>
 
-        <!-- Card de Informações -->
-        <div class="info-card">
-            <!-- Item 1: Disponibilidade -->
-            <div class="info-item">
-                <div class="info-icon accent">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #4CAF50;">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <polyline points="12 6 12 12 16 14"></polyline>
-                    </svg>
-                </div>
-                <div class="info-content">
-                    <h3>Disponível 24h</h3>
-                    <p>Todos os dias da semana</p>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badges">
+                <div class="badge">CHEGADA RÁPIDA</div>
+                <div class="badge">SEGURO</div>
+                <div class="badge">24/7</div>
+            </div>
+            <h1>PRIME GUINCHOS:<br>ATENDIMENTO 24 HORAS</h1>
+            <p>Seu carro ou moto parou? Não se preocupe. Garantimos agilidade, segurança total e preço justo no seu resgate.</p>
+            <div class="hero-cta">
+                <button class="btn-primary" onclick="openWhatsApp()">
+                    <span>🚗</span>
+                    CHAMAR GUINCHO AGORA
+                </button>
+                <button class="btn-secondary" onclick="scrollToSection('benefits')">
+                    Conhecer Mais
+                </button>
+            </div>
+            <div class="hero-note">Equipe disponível agora</div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits" id="benefits">
+        <h2 class="section-title">POR QUE ESCOLHER A PRIME GUINCHOS?</h2>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon">⚡</div>
+                <h3>Agilidade Extrema</h3>
+                <p>Sabemos que você tem pressa. Nossa frota está posicionada estrategicamente para chegar rápido.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">🛡️</div>
+                <h3>Segurança Total</h3>
+                <p>Profissionais treinados para manusear seu veículo (carro ou moto) sem causar danos.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">📍</div>
+                <h3>Cobertura Abrangente</h3>
+                <p>Atendemos na cidade e nas principais rodovias. Onde você estiver, nós buscamos.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">💰</div>
+                <h3>Preço Justo</h3>
+                <p>Sem surpresas na hora do pagamento. Transparência total no orçamento via WhatsApp.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="testimonials-header">
+            <h2>QUEM CHAMOU, RECOMENDA</h2>
+            <p>Histórias reais de motoristas que resgatamos.</p>
+            <div class="rating">★★★★★ 5.0/5.0</div>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="rating">★★★★★</div>
+                <p class="testimonial-text">"Minha moto parou na Dutra de noite. O pessoal da Prime Guinchos chegou em 20 minutos. Recomendo demais!"</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">RA</div>
+                    <div class="author-info">
+                        <h4>Ricardo Alves</h4>
+                        <p>Motociclista</p>
+                    </div>
                 </div>
             </div>
-
-            <!-- Item 2: Preço -->
-            <div class="info-item">
-                <div class="info-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #FF6B35;">
-                        <line x1="12" y1="1" x2="12" y2="23"></line>
-                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-                    </svg>
-                </div>
-                <div class="info-content">
-                    <h3>Preço Justo</h3>
-                    <p>Consulte o valor para sua região</p>
+            <div class="testimonial-card">
+                <div class="rating">★★★★★</div>
+                <p class="testimonial-text">"Atendimento excelente. Fiquei super nervosa quando o carro quebrou, mas o motorista foi muito educado e rápido."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">AC</div>
+                    <div class="author-info">
+                        <h4>Ana Clara</h4>
+                        <p>Motorista</p>
+                    </div>
                 </div>
             </div>
-
-            <!-- Item 3: Atendimento -->
-            <div class="info-item">
-                <div class="info-icon secondary">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #1A3A52;">
-                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                    </svg>
-                </div>
-                <div class="info-content">
-                    <h3>Resposta Rápida</h3>
-                    <p>Atendimento via WhatsApp em minutos</p>
+            <div class="testimonial-card">
+                <div class="rating">★★★★★</div>
+                <p class="testimonial-text">"Profissionalismo total. Cuidaram muito bem do meu carro. Preço justo pelo serviço de qualidade."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">CE</div>
+                    <div class="author-info">
+                        <h4>Carlos Eduardo</h4>
+                        <p>Transporte Executivo</p>
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Barra de Progresso -->
-        <div class="progress-section">
-            <div class="progress-bar">
-                <div class="progress-fill"></div>
-            </div>
-            <p class="progress-text">
-                Redirecionando em <span class="time-left"><span id="countdown">3</span>s</span>
-            </p>
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>NÃO FIQUE PARADO NA ESTRADA</h2>
+        <p>Equipe pronta para sair agora. Atendimento imediato.</p>
+        <div class="cta-buttons">
+            <a href="tel:11989624627" class="btn-dark">
+                <span>📞</span>
+                (11) 98962-4627
+            </a>
+            <button class="btn-dark" onclick="openWhatsApp()">
+                <span>💬</span>
+                SOLICITAR SOCORRO VIA WHATSAPP
+            </button>
         </div>
+    </section>
 
-        <!-- Botão CTA -->
-        <button class="cta-button" id="whatsappBtn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-            </svg>
-            Falar no WhatsApp Agora
-        </button>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div>&copy; 2026 Prime Guinchos. Todos os direitos reservados.</div>
+            <div class="footer-links">
+                <a href="#privacy">Privacidade</a>
+                <a href="#terms">Termos</a>
+            </div>
+        </div>
+    </footer>
 
-        <!-- Texto Informativo -->
-        <p class="info-text">
-            Você será redirecionado para o WhatsApp em alguns segundos. Clique acima para ir agora.
-        </p>
-    </div>
+    <!-- Floating WhatsApp Button -->
+    <a href="javascript:void(0)" class="float-whatsapp" onclick="openWhatsApp()" title="Falar no WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-4.869 1.171c-1.519.761-2.823 1.993-3.56 3.574-.737 1.58-.885 3.324-.417 4.988.468 1.664 1.491 3.139 2.882 4.204 1.391 1.065 3.007 1.784 4.716 1.784 1.578 0 3.072-.429 4.37-1.214l.321-.194c1.63-.98 2.997-2.537 3.772-4.555.775-2.018.849-4.269.214-6.379-.635-2.11-1.888-3.897-3.56-5.12-1.672-1.224-3.712-1.84-5.833-1.84z"/>
+        </svg>
+    </a>
 
     <script>
         // Configurações
-        const WHATSAPP_NUMBER = "5511999999999"; // Substitua pelo seu número
-        const WHATSAPP_MESSAGE = "Olá! Gostaria de solicitar um Guincho...";
-        const REDIRECT_TIME = 3; // segundos
+        const WHATSAPP_NUMBER = "5511989624627"; // Substitua pelo seu número
+        const DEFAULT_MESSAGE = "Olá! Preciso de um guincho agora. Podem me ajudar?";
 
-        // Elementos do DOM
-        const countdownElement = document.getElementById("countdown");
-        const whatsappBtn = document.getElementById("whatsappBtn");
-
-        // Variáveis de controle
-        let timeLeft = REDIRECT_TIME;
-        let shouldRedirect = false;
-
-        // Função para redirecionar para WhatsApp
-        function redirectToWhatsApp() {
-            const encodedMessage = encodeURIComponent(WHATSAPP_MESSAGE);
+        // Função para abrir WhatsApp
+        function openWhatsApp(customMessage = null) {
+            const message = customMessage || DEFAULT_MESSAGE;
+            const encodedMessage = encodeURIComponent(message);
             const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
-            window.location.href = whatsappUrl;
+            window.open(whatsappUrl, '_blank');
         }
 
-        // Contador regressivo
-        function startCountdown() {
-            const countdownInterval = setInterval(() => {
-                timeLeft--;
-                countdownElement.textContent = timeLeft;
-
-                if (timeLeft <= 0) {
-                    clearInterval(countdownInterval);
-                    shouldRedirect = true;
-                    redirectToWhatsApp();
-                }
-            }, 1000);
+        // Função para scroll suave
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
         }
 
-        // Event listener para o botão
-        whatsappBtn.addEventListener("click", redirectToWhatsApp);
-
-        // Iniciar o contador quando a página carregar
-        window.addEventListener("load", () => {
-            startCountdown();
+        // Analytics simples
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.btn-primary') || e.target.closest('.float-whatsapp')) {
+                console.log('WhatsApp CTA clicado');
+            }
         });
-
-        // Iniciar o contador imediatamente (caso o load já tenha ocorrido)
-        if (document.readyState === "loading") {
-            document.addEventListener("DOMContentLoaded", startCountdown);
-        } else {
-            startCountdown();
-        }
     </script>
 </body>
 </html>
