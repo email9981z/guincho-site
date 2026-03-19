@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prime Guinchos | Auto Socorro 24h Rápido e Seguro</title>
+    <title id="page-title">Guincho em - Auto Socorro 24h Rápido e Seguro</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -68,6 +68,20 @@
             font-size: 1.25rem;
             font-weight: 800;
             color: #ffa500;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.2rem;
+        }
+
+        .logo-main {
+            font-size: 1.25rem;
+        }
+
+        .logo-location {
+            font-size: 0.7rem;
+            color: #c0c0c0;
+            font-weight: 600;
         }
 
         .header-btn {
@@ -124,6 +138,7 @@
             z-index: 2;
             max-width: 600px;
             animation: fadeIn 0.8s ease-out;
+            text-align: center;
         }
 
         .hero-badges {
@@ -131,6 +146,7 @@
             gap: 0.75rem;
             margin-bottom: 1.5rem;
             flex-wrap: wrap;
+            justify-content: center;
         }
 
         .badge {
@@ -164,6 +180,11 @@
             letter-spacing: -0.5px;
         }
 
+        .location-highlight {
+            color: #ffa500;
+            font-weight: 900;
+        }
+
         .hero p {
             font-size: 1rem;
             color: #c0c0c0;
@@ -176,6 +197,7 @@
             gap: 1rem;
             margin-bottom: 1rem;
             flex-wrap: wrap;
+            justify-content: center;
         }
 
         .btn-primary {
@@ -210,6 +232,7 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            justify-content: center;
         }
 
         .hero-note::before {
@@ -515,7 +538,7 @@
         }
 
         .footer-content {
-            max-width: 1200px;
+            max-width: 600px;
             margin: 0 auto;
             display: flex;
             justify-content: center;
@@ -606,16 +629,6 @@
                 font-size: 1.5rem;
             }
 
-            .benefits-grid,
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .gallery {
-                grid-template-columns: repeat(3, 1fr);
-                max-width: 100%;
-            }
-
             .cta-section {
                 padding: 2rem 1rem;
             }
@@ -660,12 +673,19 @@
                 grid-template-columns: repeat(3, 1fr);
             }
         }
+
+        .loading {
+            opacity: 0.5;
+        }
     </style>
 </head>
 <body>
     <!-- Header Flutuante -->
     <header class="header-float">
-        <div class="header-logo">PRIMEGUINCHOS</div>
+        <div class="header-logo">
+            <div class="logo-main">GUINCHO EM</div>
+            <div class="logo-location" id="header-location">Detectando...</div>
+        </div>
         <button class="header-btn" onclick="openWhatsApp()">
             <span>💬</span>
             Pedir Socorro Agora
@@ -680,7 +700,7 @@
                 <div class="badge">SEGURO</div>
                 <div class="badge">24/7</div>
             </div>
-            <h1>PRIME GUINCHOS:<br>ATENDIMENTO 24 HORAS</h1>
+            <h1>GUINCHO EM <span class="location-highlight" id="hero-location">SUA REGIÃO</span>:<br>ATENDIMENTO 24 HORAS</h1>
             <p>Seu carro ou moto parou? Não se preocupe. Garantimos agilidade, segurança total e preço justo no seu resgate.</p>
             <div class="hero-cta">
                 <button class="btn-primary" onclick="openWhatsApp()">
@@ -710,7 +730,7 @@
 
     <!-- Benefits Section -->
     <section class="benefits">
-        <h2 class="section-title">POR QUE ESCOLHER A PRIME GUINCHOS?</h2>
+        <h2 class="section-title">POR QUE ESCOLHER GUINCHO EM?</h2>
         <div class="benefits-grid">
             <div class="benefit-card">
                 <div class="benefit-icon">⚡</div>
@@ -748,7 +768,7 @@
         <div class="testimonials-grid">
             <div class="testimonial-card">
                 <div class="testimonial-stars">★★★★★</div>
-                <p class="testimonial-text">"Minha moto parou na Dutra de noite. O pessoal da Prime Guinchos chegou em 20 minutos. Recomendo demais!"</p>
+                <p class="testimonial-text">"Minha moto parou na Dutra de noite. O pessoal chegou em 20 minutos. Recomendo demais!"</p>
                 <div class="testimonial-author">
                     <div class="author-avatar">RA</div>
                     <div class="author-info">
@@ -801,7 +821,7 @@
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <div>&copy; 2026 Prime Guinchos. Todos os direitos reservados.</div>
+            <div>&copy; 2026 Guincho em. Todos os direitos reservados.</div>
             <div class="footer-links">
                 <a href="#privacy">Privacidade</a>
                 <a href="#terms">Termos</a>
@@ -819,20 +839,49 @@
     <script>
         // Configurações
         const WHATSAPP_NUMBER = "5511989624627"; // Substitua pelo seu número
-        const DEFAULT_MESSAGE = "Olá! Preciso de um guincho agora. Podem me ajudar?";
+        let userLocation = "SUA REGIÃO";
+        let userCity = "";
+
+        // Função para detectar localização pelo IP
+        async function detectLocation() {
+            try {
+                const response = await fetch('https://ipapi.co/json/');
+                const data = await response.json();
+                
+                userCity = data.city || data.region_code || "SUA REGIÃO";
+                userLocation = userCity.toUpperCase();
+                
+                // Atualizar header
+                document.getElementById('header-location').textContent = userCity;
+                
+                // Atualizar hero
+                document.getElementById('hero-location').textContent = userLocation;
+                
+                // Atualizar title
+                document.getElementById('page-title').textContent = `Guincho em ${userCity} - Auto Socorro 24h Rápido e Seguro`;
+                
+                console.log('Localização detectada:', userLocation);
+            } catch (error) {
+                console.log('Erro ao detectar localização:', error);
+                userLocation = "SUA REGIÃO";
+            }
+        }
 
         // Função para abrir WhatsApp
         function openWhatsApp(customMessage = null) {
-            const message = customMessage || DEFAULT_MESSAGE;
+            const message = customMessage || `Olá! Preciso de um guincho em ${userCity || 'minha região'} agora. Podem me ajudar?`;
             const encodedMessage = encodeURIComponent(message);
             const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
             window.open(whatsappUrl, '_blank');
         }
 
+        // Detectar localização ao carregar
+        window.addEventListener('load', detectLocation);
+
         // Analytics simples
         document.addEventListener('click', function(e) {
             if (e.target.closest('.btn-primary') || e.target.closest('.float-whatsapp') || e.target.closest('.header-btn')) {
-                console.log('WhatsApp CTA clicado');
+                console.log('WhatsApp CTA clicado - Localização:', userLocation);
             }
         });
     </script>
