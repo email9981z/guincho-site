@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrimeGuincho 24h - Atendimento Rápido via WhatsApp</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FFFFFF;
+            color: #1A3A52;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        /* Animações */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes spinSlow {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes pulseSubtle {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 0 10px rgba(255, 107, 53, 0);
+            }
+        }
+
+        @keyframes progressFill {
+            from {
+                width: 0%;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        /* Container Principal */
+        .container {
+            max-width: 500px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        /* Header com Logo */
+        .header {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            animation: fadeIn 0.6s ease-out;
+            animation-delay: 100ms;
+            animation-fill-mode: both;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .logo {
+            background: linear-gradient(135deg, #FF6B35 0%, #FF8C5A 100%);
+            padding: 1rem;
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+            animation: spinSlow 3s linear infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+        }
+
+        .logo svg {
+            width: 48px;
+            height: 48px;
+            color: white;
+        }
+
+        h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1A3A52;
+            margin: 0;
+        }
+
+        .subtitle {
+            font-size: 1.125rem;
+            color: #666666;
+            font-weight: 500;
+        }
+
+        /* Card de Informações */
+        .info-card {
+            background-color: #F5F5F5;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            animation: fadeIn 0.6s ease-out;
+            animation-delay: 200ms;
+            animation-fill-mode: both;
+        }
+
+        .info-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .info-icon {
+            background-color: rgba(255, 107, 53, 0.1);
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+        }
+
+        .info-icon.accent {
+            background-color: rgba(76, 175, 80, 0.1);
+        }
+
+        .info-icon.secondary {
+            background-color: rgba(26, 58, 82, 0.1);
+        }
+
+        .info-icon svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .info-content h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1A3A52;
+            margin-bottom: 0.25rem;
+        }
+
+        .info-content p {
+            font-size: 0.875rem;
+            color: #666666;
+            margin: 0;
+        }
+
+        /* Barra de Progresso */
+        .progress-section {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            animation: fadeIn 0.6s ease-out;
+            animation-delay: 300ms;
+            animation-fill-mode: both;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background-color: #E0E0E0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #FF6B35 0%, #FF8C5A 100%);
+            border-radius: 4px;
+            animation: progressFill 3s ease-out forwards;
+        }
+
+        .progress-text {
+            text-align: center;
+            font-size: 0.875rem;
+            color: #666666;
+        }
+
+        .progress-text .time-left {
+            font-weight: 600;
+            color: #FF6B35;
+        }
+
+        /* Botão CTA */
+        .cta-button {
+            background: linear-gradient(135deg, #FF6B35 0%, #FF8C5A 100%);
+            color: white;
+            border: none;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+            animation: fadeIn 0.6s ease-out, pulseSubtle 2s infinite;
+            animation-delay: 400ms, 400ms;
+            animation-fill-mode: both;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 16px rgba(255, 107, 53, 0.4);
+        }
+
+        .cta-button:active {
+            transform: scale(0.95);
+        }
+
+        .cta-button svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Texto Informativo */
+        .info-text {
+            text-align: center;
+            font-size: 0.75rem;
+            color: #666666;
+            animation: fadeIn 0.6s ease-out;
+            animation-delay: 500ms;
+            animation-fill-mode: both;
+        }
+
+        /* Responsivo */
+        @media (max-width: 640px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .info-card {
+                padding: 1rem;
+            }
+
+            .container {
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header com Logo -->
+        <div class="header">
+            <div class="logo-container">
+                <div class="logo">
+                    <!-- Ícone de Guincho (Truck) -->
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M10 17h6M4 17h2m12 0h2M5 20h14a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2z"></path>
+                        <circle cx="6.5" cy="17" r="1.5"></circle>
+                        <circle cx="17.5" cy="17" r="1.5"></circle>
+                    </svg>
+                </div>
+            </div>
+            <h1>PrimeGuincho 24h</h1>
+            <p class="subtitle">Atendimento Rápido via WhatsApp</p>
+        </div>
+
+        <!-- Card de Informações -->
+        <div class="info-card">
+            <!-- Item 1: Disponibilidade -->
+            <div class="info-item">
+                <div class="info-icon accent">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #4CAF50;">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                </div>
+                <div class="info-content">
+                    <h3>Disponível 24h</h3>
+                    <p>Todos os dias da semana</p>
+                </div>
+            </div>
+
+            <!-- Item 2: Preço -->
+            <div class="info-item">
+                <div class="info-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #FF6B35;">
+                        <line x1="12" y1="1" x2="12" y2="23"></line>
+                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                    </svg>
+                </div>
+                <div class="info-content">
+                    <h3>Preço Justo</h3>
+                    <p>Consulte o valor para sua região</p>
+                </div>
+            </div>
+
+            <!-- Item 3: Atendimento -->
+            <div class="info-item">
+                <div class="info-icon secondary">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #1A3A52;">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                </div>
+                <div class="info-content">
+                    <h3>Resposta Rápida</h3>
+                    <p>Atendimento via WhatsApp em minutos</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Barra de Progresso -->
+        <div class="progress-section">
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+            <p class="progress-text">
+                Redirecionando em <span class="time-left"><span id="countdown">3</span>s</span>
+            </p>
+        </div>
+
+        <!-- Botão CTA -->
+        <button class="cta-button" id="whatsappBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+            Falar no WhatsApp Agora
+        </button>
+
+        <!-- Texto Informativo -->
+        <p class="info-text">
+            Você será redirecionado para o WhatsApp em alguns segundos. Clique acima para ir agora.
+        </p>
+    </div>
+
+    <script>
+        // Configurações
+        const WHATSAPP_NUMBER = "5511999999999"; // Substitua pelo seu número
+        const WHATSAPP_MESSAGE = "Olá! Gostaria de solicitar um Guincho...";
+        const REDIRECT_TIME = 3; // segundos
+
+        // Elementos do DOM
+        const countdownElement = document.getElementById("countdown");
+        const whatsappBtn = document.getElementById("whatsappBtn");
+
+        // Variáveis de controle
+        let timeLeft = REDIRECT_TIME;
+        let shouldRedirect = false;
+
+        // Função para redirecionar para WhatsApp
+        function redirectToWhatsApp() {
+            const encodedMessage = encodeURIComponent(WHATSAPP_MESSAGE);
+            const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+            window.location.href = whatsappUrl;
+        }
+
+        // Contador regressivo
+        function startCountdown() {
+            const countdownInterval = setInterval(() => {
+                timeLeft--;
+                countdownElement.textContent = timeLeft;
+
+                if (timeLeft <= 0) {
+                    clearInterval(countdownInterval);
+                    shouldRedirect = true;
+                    redirectToWhatsApp();
+                }
+            }, 1000);
+        }
+
+        // Event listener para o botão
+        whatsappBtn.addEventListener("click", redirectToWhatsApp);
+
+        // Iniciar o contador quando a página carregar
+        window.addEventListener("load", () => {
+            startCountdown();
+        });
+
+        // Iniciar o contador imediatamente (caso o load já tenha ocorrido)
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", startCountdown);
+        } else {
+            startCountdown();
+        }
+    </script>
+</body>
+</html>
