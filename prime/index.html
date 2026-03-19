@@ -1,96 +1,840 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prime Guinchos | Auto Socorro 24h Rápido e Seguro</title>
-    <meta name="description" content="Precisa de guincho agora? Atendimento 24 horas para carros e motos. Chegamos rápido com segurança e preço justo. Clique e chame no WhatsApp." />
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              primary: '#F59E0B', // Amber 500
-              primaryHover: '#D97706', // Amber 600
-              secondary: '#111827', // Slate 900
-              accent: '#EF4444', // Red 500
-              surface: '#1E293B', // Slate 800
-            },
-            fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-              display: ['Chakra Petch', 'sans-serif'],
-            }
-          }
-        }
-      }
-    </script>
-    <style>
-      /* Custom Glow Button Animation */
-      .glow-btn {
-        position: relative;
-        isolation: isolate;
-        overflow: hidden;
-      }
-      
-      .glow-btn::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(255, 255, 255, 0.3),
-          transparent
-        );
-        transition: left 0.5s ease-in-out;
-        z-index: -1;
-        pointer-events: none;
-      }
-
-      .glow-btn:hover::before {
-        left: 100%;
-      }
-
-      .glow-btn[data-state="clicked"] {
-        transform: scale(0.95);
-      }
-    </style>
-
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<link rel="stylesheet" href="/index.css">
-  <script type="importmap">
-{
-  "imports": {
-    "three": "https://esm.sh/three@^0.182.0",
-    "@react-three/fiber": "https://esm.sh/@react-three/fiber@^9.5.0",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "@react-three/drei": "https://esm.sh/@react-three/drei@^10.7.7",
-    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react": "https://esm.sh/react@^19.2.3",
-    "framer-motion": "https://esm.sh/framer-motion@^12.29.0",
-    "clsx": "https://esm.sh/clsx@^2.1.0",
-    "tailwind-merge": "https://esm.sh/tailwind-merge@^2.2.1",
-    "path": "https://esm.sh/path@^0.12.7",
-    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
-    "vite": "https://esm.sh/vite@^7.3.1"
-  }
-}
-</script>
-  <script type="module" crossorigin src="/assets/index-3-NovPIn.js"></script>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0e13;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* Animações */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.8;
+            }
+        }
+
+        /* Header Flutuante */
+        .header-float {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 14, 19, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 165, 0, 0.1);
+        }
+
+        .header-logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #ffa500;
+        }
+
+        .header-btn {
+            background: #25d366;
+            color: #ffffff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.35rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .header-btn:hover {
+            background: #1ead52;
+            transform: scale(1.05);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 70px;
+            background: linear-gradient(135deg, rgba(10, 14, 19, 0.9) 0%, rgba(20, 28, 40, 0.95) 100%),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23161d28" width="1200" height="600"/></svg>');
+            background-size: cover;
+            background-position: center;
+            padding: 3rem 1.5rem;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(255, 165, 0, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .hero-badges {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: rgba(255, 165, 0, 0.15);
+            border: 1px solid #ffa500;
+            color: #ffa500;
+            padding: 0.4rem 0.9rem;
+            border-radius: 1.5rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .badge::before {
+            content: '⚡';
+            font-size: 0.9rem;
+        }
+
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            color: #c0c0c0;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: #ffa500;
+            color: #0a0e13;
+            border: none;
+            padding: 0.9rem 1.8rem;
+            border-radius: 0.35rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .btn-primary:hover {
+            background: #ffb84d;
+            transform: scale(1.05);
+            animation: none;
+        }
+
+        .hero-note {
+            font-size: 0.85rem;
+            color: #808080;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hero-note::before {
+            content: '✓';
+            color: #4caf50;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        /* Galeria de Imagens */
+        .gallery {
+            background: #0a0e13;
+            padding: 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            width: 100%;
+            aspect-ratio: 1;
+            background: #1a2332;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            border: 1px solid rgba(255, 165, 0, 0.1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            background: #0a0e13;
+            padding: 3rem 1.5rem;
+        }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .benefit-card {
+            background: linear-gradient(135deg, #1a2332 0%, #161d28 100%);
+            border: 1px solid rgba(255, 165, 0, 0.15);
+            padding: 1.75rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            transition: all 0.3s;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .benefit-card:nth-child(1) { animation-delay: 0.1s; }
+        .benefit-card:nth-child(2) { animation-delay: 0.2s; }
+        .benefit-card:nth-child(3) { animation-delay: 0.3s; }
+        .benefit-card:nth-child(4) { animation-delay: 0.4s; }
+
+        .benefit-card:hover {
+            border-color: #ffa500;
+            background: linear-gradient(135deg, #1f2a3a 0%, #1a2332 100%);
+            transform: translateY(-5px);
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: #ffffff;
+        }
+
+        .benefit-card p {
+            color: #a0a0a0;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: linear-gradient(135deg, #161d28 0%, #0a0e13 100%);
+            padding: 3rem 1.5rem;
+        }
+
+        .testimonials-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .testimonials-header h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+        }
+
+        .testimonials-header p {
+            color: #a0a0a0;
+            font-size: 0.95rem;
+        }
+
+        .rating-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            font-weight: 700;
+        }
+
+        .rating-stars {
+            color: #ffa500;
+            font-size: 1.1rem;
+            letter-spacing: 0.2rem;
+        }
+
+        .rating-text {
+            color: #ffa500;
+            font-size: 0.9rem;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 165, 0, 0.05);
+            border: 1px solid rgba(255, 165, 0, 0.15);
+            padding: 1.75rem;
+            border-radius: 0.5rem;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .testimonial-card:nth-child(1) { animation-delay: 0.1s; }
+        .testimonial-card:nth-child(2) { animation-delay: 0.2s; }
+        .testimonial-card:nth-child(3) { animation-delay: 0.3s; }
+
+        .testimonial-stars {
+            color: #ffa500;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            letter-spacing: 0.2rem;
+        }
+
+        .testimonial-text {
+            color: #d0d0d0;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ffa500, #ffb84d);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #0a0e13;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .author-info h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.2rem;
+            font-size: 0.95rem;
+        }
+
+        .author-info p {
+            font-size: 0.8rem;
+            color: #ffa500;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #ffa500 0%, #ffb84d 100%);
+            padding: 3rem 1.5rem;
+            text-align: center;
+            color: #0a0e13;
+        }
+
+        .cta-section h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+        }
+
+        .cta-section p {
+            font-size: 1rem;
+            margin-bottom: 1.75rem;
+            opacity: 0.95;
+            font-weight: 500;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-dark {
+            background: #0a0e13;
+            color: #ffa500;
+            border: none;
+            padding: 0.9rem 1.8rem;
+            border-radius: 0.35rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-dark:hover {
+            background: #1a2332;
+            transform: scale(1.05);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #0a0e13;
+            border: 2px solid #0a0e13;
+            padding: 0.75rem 1.6rem;
+            border-radius: 0.35rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-outline:hover {
+            background: rgba(10, 14, 19, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            background: #0a0e13;
+            border-top: 1px solid rgba(255, 165, 0, 0.1);
+            padding: 2rem 1.5rem;
+            text-align: center;
+            color: #606060;
+            font-size: 0.85rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        .footer-links a {
+            color: #606060;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .footer-links a:hover {
+            color: #ffa500;
+        }
+
+        /* Floating WhatsApp Button */
+        .float-whatsapp {
+            position: fixed;
+            bottom: 2rem;
+            right: 1.5rem;
+            width: 60px;
+            height: 60px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s;
+            z-index: 999;
+            text-decoration: none;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .float-whatsapp:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.6);
+            animation: none;
+        }
+
+        .float-whatsapp svg {
+            width: 32px;
+            height: 32px;
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-float {
+                padding: 0.75rem 1rem;
+            }
+
+            .header-logo {
+                font-size: 1rem;
+            }
+
+            .header-btn {
+                font-size: 0.75rem;
+                padding: 0.4rem 0.8rem;
+            }
+
+            .hero {
+                margin-top: 60px;
+                padding: 2rem 1rem;
+                min-height: 60vh;
+            }
+
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .hero p {
+                font-size: 0.95rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .benefits-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(3, 1fr);
+                max-width: 100%;
+            }
+
+            .cta-section {
+                padding: 2rem 1rem;
+            }
+
+            .cta-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn-dark,
+            .btn-outline {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .float-whatsapp {
+                width: 55px;
+                height: 55px;
+                bottom: 1.5rem;
+                right: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.25rem;
+            }
+
+            .benefit-card,
+            .testimonial-card {
+                padding: 1.25rem;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
 </head>
-  <body class="bg-slate-900 text-slate-50 antialiased overflow-x-hidden selection:bg-amber-500 selection:text-white">
-    <div id="root"></div>
+<body>
+    <!-- Header Flutuante -->
+    <header class="header-float">
+        <div class="header-logo">PRIMEGUINCHOS</div>
+        <button class="header-btn" onclick="openWhatsApp()">
+            <span>💬</span>
+            Pedir Socorro Agora
+        </button>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badges">
+                <div class="badge">CHEGADA RÁPIDA</div>
+                <div class="badge">SEGURO</div>
+                <div class="badge">24/7</div>
+            </div>
+            <h1>PRIME GUINCHOS:<br>ATENDIMENTO 24 HORAS</h1>
+            <p>Seu carro ou moto parou? Não se preocupe. Garantimos agilidade, segurança total e preço justo no seu resgate.</p>
+            <div class="hero-cta">
+                <button class="btn-primary" onclick="openWhatsApp()">
+                    <span>🚗</span>
+                    CHAMAR GUINCHO AGORA
+                </button>
+            </div>
+            <div class="hero-note">Equipe disponível agora</div>
+        </div>
+    </section>
+
+    <!-- Galeria -->
+    <div class="gallery">
+        <div class="gallery-item">
+            <div style="background: linear-gradient(135deg, #ffa500, #ffb84d); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">Foto 1</div>
+        </div>
+        <div class="gallery-item">
+            <div style="background: linear-gradient(135deg, #ffb84d, #ffa500); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">Foto 2</div>
+        </div>
+        <div class="gallery-item">
+            <div style="background: linear-gradient(135deg, #ffa500, #ffb84d); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">Foto 3</div>
+        </div>
+        <div class="gallery-item">
+            <div style="background: linear-gradient(135deg, #ffb84d, #ffa500); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">Foto 4</div>
+        </div>
+    </div>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <h2 class="section-title">POR QUE ESCOLHER A PRIME GUINCHOS?</h2>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon">⚡</div>
+                <h3>Agilidade Extrema</h3>
+                <p>Sabemos que você tem pressa. Nossa frota está posicionada estrategicamente para chegar rápido.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">🛡️</div>
+                <h3>Segurança Total</h3>
+                <p>Profissionais treinados para manusear seu veículo (carro ou moto) sem causar danos.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">📍</div>
+                <h3>Cobertura Abrangente</h3>
+                <p>Atendemos na cidade e nas principais rodovias. Onde você estiver, nós buscamos.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">💰</div>
+                <h3>Preço Justo</h3>
+                <p>Sem surpresas na hora do pagamento. Transparência total no orçamento via WhatsApp.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="testimonials-header">
+            <h2>QUEM CHAMOU, RECOMENDA</h2>
+            <p>Histórias reais de motoristas que resgatamos.</p>
+            <div class="rating-badge">
+                <div class="rating-stars">★★★★★</div>
+                <div class="rating-text">5.0/5.0</div>
+            </div>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">"Minha moto parou na Dutra de noite. O pessoal da Prime Guinchos chegou em 20 minutos. Recomendo demais!"</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">RA</div>
+                    <div class="author-info">
+                        <h4>Ricardo Alves</h4>
+                        <p>Motociclista</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">"Atendimento excelente. Fiquei super nervosa quando o carro quebrou, mas o motorista foi muito educado e rápido."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">AC</div>
+                    <div class="author-info">
+                        <h4>Ana Clara</h4>
+                        <p>Motorista</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">"Profissionalismo total. Cuidaram muito bem do meu carro. Preço justo pelo serviço de qualidade."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">CE</div>
+                    <div class="author-info">
+                        <h4>Carlos Eduardo</h4>
+                        <p>Transporte Executivo</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>NÃO FIQUE PARADO NA ESTRADA</h2>
+        <p>Equipe pronta para sair agora. Atendimento imediato.</p>
+        <div class="cta-buttons">
+            <a href="tel:11989624627" class="btn-dark">
+                <span>📞</span>
+                (11) 98962-4627
+            </a>
+            <button class="btn-dark" onclick="openWhatsApp()">
+                <span>💬</span>
+                SOLICITAR SOCORRO VIA WHATSAPP
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div>&copy; 2026 Prime Guinchos. Todos os direitos reservados.</div>
+            <div class="footer-links">
+                <a href="#privacy">Privacidade</a>
+                <a href="#terms">Termos</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="javascript:void(0)" class="float-whatsapp" onclick="openWhatsApp()" title="Falar no WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-4.869 1.171c-1.519.761-2.823 1.993-3.56 3.574-.737 1.58-.885 3.324-.417 4.988.468 1.664 1.491 3.139 2.882 4.204 1.391 1.065 3.007 1.784 4.716 1.784 1.578 0 3.072-.429 4.37-1.214l.321-.194c1.63-.98 2.997-2.537 3.772-4.555.775-2.018.849-4.269.214-6.379-.635-2.11-1.888-3.897-3.56-5.12-1.672-1.224-3.712-1.84-5.833-1.84z"/>
+        </svg>
+    </a>
+
+    <script>
+        // Configurações
+        const WHATSAPP_NUMBER = "5511989624627"; // Substitua pelo seu número
+        const DEFAULT_MESSAGE = "Olá! Preciso de um guincho agora. Podem me ajudar?";
+
+        // Função para abrir WhatsApp
+        function openWhatsApp(customMessage = null) {
+            const message = customMessage || DEFAULT_MESSAGE;
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Analytics simples
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.btn-primary') || e.target.closest('.float-whatsapp') || e.target.closest('.header-btn')) {
+                console.log('WhatsApp CTA clicado');
+            }
+        });
+    </script>
 </body>
 </html>
