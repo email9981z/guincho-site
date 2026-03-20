@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Baterias Moura - Entrega e Instalação em até 50 Minutos</title>
-    <meta name="description" content="Baterias automotivas de qualidade premium com entrega rápida em até 50 minutos e instalação profissional. Garantia de 24 meses.">
+    <title>Baterias Moura - Entrega em 50 Minutos | Compre Agora</title>
+    <meta name="description" content="Baterias automotivas com entrega e instalação em até 50 minutos. Garantia 24 meses. Compre agora e receba hoje mesmo!">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -32,10 +32,6 @@
             font-weight: 700;
         }
 
-        h2, h3 {
-            font-weight: 600;
-        }
-
         .container {
             width: 100%;
             margin: 0 auto;
@@ -43,71 +39,61 @@
             max-width: 1280px;
         }
 
-        @media (min-width: 640px) {
-            .container {
-                padding: 0 1.5rem;
-            }
-        }
-
-        @media (min-width: 1024px) {
+        @media (min-width: 768px) {
             .container {
                 padding: 0 2rem;
             }
         }
 
-        /* Header Styles */
+        /* Cores Baterias Moura */
+        :root {
+            --primary-red: #c41e3a;
+            --secondary-red: #e63946;
+            --accent-yellow: #ffd60a;
+            --dark-bg: #1a1a1a;
+            --light-gray: #f8f9fa;
+        }
+
+        /* Header */
         header {
             position: sticky;
             top: 0;
-            z-index: 50;
-            background-color: white;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 40;
+            background: linear-gradient(135deg, var(--primary-red) 0%, var(--secondary-red) 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(196, 30, 58, 0.3);
         }
 
         .header-content {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 1rem 0;
         }
 
         .logo {
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            font-weight: 800;
+            font-size: 1.25rem;
         }
 
         .logo-icon {
             width: 40px;
             height: 40px;
-            background: linear-gradient(135deg, #1e3a8a 0%, #ff6b35 100%);
-            border-radius: 0.5rem;
+            background: white;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.25rem;
-        }
-
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .logo-text span:first-child {
-            font-weight: 700;
-            font-size: 1.125rem;
-            color: #1e3a8a;
-        }
-
-        .logo-text span:last-child {
-            font-size: 0.75rem;
-            color: #ff6b35;
-            font-weight: 600;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-red);
         }
 
         nav {
             display: none;
-            align-items: center;
             gap: 2rem;
         }
 
@@ -118,68 +104,49 @@
         }
 
         nav a {
-            color: #374151;
+            color: white;
             text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
+            font-weight: 600;
+            transition: opacity 0.3s;
         }
 
         nav a:hover {
-            color: #ff6b35;
+            opacity: 0.8;
         }
 
-        .btn-primary {
-            background-color: #ff6b35;
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            font-weight: 500;
+        .header-cta {
+            background: white;
+            color: var(--primary-red);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: 700;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            transition: all 0.2s;
-            border: none;
-            cursor: pointer;
+            transition: all 0.3s;
+            animation: pulse-button 2s infinite;
         }
 
-        .btn-primary:hover {
-            box-shadow: 0 10px 15px rgba(255, 107, 53, 0.3);
+        .header-cta:hover {
             transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
         }
 
-        .btn-primary:active {
-            transform: scale(0.95);
-        }
-
-        .btn-secondary {
-            background-color: #1e3a8a;
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            font-weight: 500;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.2s;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-secondary:hover {
-            box-shadow: 0 10px 15px rgba(30, 58, 138, 0.3);
-            transform: scale(1.05);
+        @keyframes pulse-button {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
+            50% { box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
         }
 
         .menu-toggle {
             display: block;
-            background: none;
+            background: rgba(255, 255, 255, 0.2);
             border: none;
+            color: white;
             cursor: pointer;
             padding: 0.5rem;
             border-radius: 0.5rem;
-            transition: background-color 0.3s;
+            transition: background 0.3s;
         }
 
         @media (min-width: 768px) {
@@ -189,44 +156,68 @@
         }
 
         .menu-toggle:hover {
-            background-color: #f3f4f6;
+            background: rgba(255, 255, 255, 0.3);
         }
 
-        .mobile-menu {
-            display: none;
-            background-color: #f9fafb;
-            border-top: 1px solid #e5e7eb;
-        }
-
-        .mobile-menu.active {
-            display: block;
-        }
-
-        .mobile-menu nav {
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 999;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+            border-radius: 50%;
             display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            padding: 1rem 0;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            animation: float-bounce 3s ease-in-out infinite;
+            text-decoration: none;
+            transition: all 0.3s;
         }
 
-        .mobile-menu nav a {
-            color: #374151;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 0.5rem 0;
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+        }
+
+        @keyframes float-bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @media (max-width: 768px) {
+            .whatsapp-float {
+                bottom: 1rem;
+                right: 1rem;
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(to right, #1e3a8a, #1e40af, #1e3a8a);
+            background: linear-gradient(135deg, var(--primary-red) 0%, var(--secondary-red) 100%);
             color: white;
             padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
         }
 
-        @media (min-width: 768px) {
-            .hero {
-                padding: 6rem 0;
-            }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
         }
 
         .hero-content {
@@ -234,6 +225,8 @@
             grid-template-columns: 1fr;
             gap: 2rem;
             align-items: center;
+            position: relative;
+            z-index: 1;
         }
 
         @media (min-width: 768px) {
@@ -242,185 +235,168 @@
             }
         }
 
-        .hero-text {
-            animation: fadeInUp 0.6s ease-out;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background-color: rgba(255, 255, 255, 0.2);
-            padding: 0.5rem 1rem;
-            border-radius: 9999px;
-            backdrop-filter: blur(10px);
-            margin-bottom: 1.5rem;
-            font-size: 0.875rem;
-            font-weight: 600;
-        }
-
-        .hero h1 {
-            font-size: 2.25rem;
+        .hero-text h1 {
+            font-size: 2.5rem;
             line-height: 1.2;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         @media (min-width: 768px) {
-            .hero h1 {
-                font-size: 3rem;
+            .hero-text h1 {
+                font-size: 3.5rem;
             }
         }
 
-        @media (min-width: 1024px) {
-            .hero h1 {
-                font-size: 3.75rem;
-            }
+        .hero-text h1 .highlight {
+            color: var(--accent-yellow);
+            display: block;
+            font-size: 1.2em;
         }
 
-        .hero h1 .accent {
-            color: #ff6b35;
-        }
-
-        .hero p {
-            font-size: 1.125rem;
-            color: #dbeafe;
-            max-width: 28rem;
-            margin-bottom: 2rem;
-        }
-
-        .hero-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        @media (min-width: 640px) {
-            .hero-buttons {
-                flex-direction: row;
-            }
-        }
-
-        .btn-outline {
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            font-weight: 500;
-            border: 2px solid white;
-            color: white;
-            background-color: transparent;
-            text-decoration: none;
+        .urgency-badge {
             display: inline-flex;
             align-items: center;
-            justify-content: center;
             gap: 0.5rem;
-            transition: all 0.2s;
-            cursor: pointer;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.75rem 1.25rem;
+            border-radius: 25px;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            backdrop-filter: blur(10px);
         }
 
-        .btn-outline:hover {
-            background-color: white;
-            color: #1e3a8a;
+        .urgency-badge::before {
+            content: '⚡';
+            animation: pulse 1s infinite;
         }
 
-        .hero-badges {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
         }
 
-        .badge-item {
+        .hero-description {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .hero-benefits {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .benefit-item {
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
 
-        .badge-check {
-            width: 32px;
-            height: 32px;
-            background-color: #ff6b35;
+        .benefit-item::before {
+            content: '✓';
+            width: 24px;
+            height: 24px;
+            background: var(--accent-yellow);
+            color: var(--primary-red);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        .hero-cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        @media (min-width: 640px) {
+            .hero-cta-buttons {
+                flex-direction: row;
+            }
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 8px;
             font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary-red);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
         }
 
         .hero-image {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .hero-image-bg {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to bottom right, rgba(255, 107, 53, 0.2), transparent);
-            border-radius: 1.5rem;
-            filter: blur(3rem);
+            text-align: center;
         }
 
         .hero-image img {
-            position: relative;
-            width: 100%;
-            max-width: 28rem;
-            filter: drop-shadow(0 20px 25px rgba(0, 0, 0, 0.3));
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.2));
             animation: float 3s ease-in-out infinite;
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px); }
+            0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-20px); }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         /* Differentials Section */
         .differentials {
             padding: 4rem 0;
-            background-color: #f9fafb;
-        }
-
-        @media (min-width: 768px) {
-            .differentials {
-                padding: 6rem 0;
-            }
+            background: var(--light-gray);
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 4rem;
-            animation: fadeInUp 0.6s ease-out;
+            margin-bottom: 3rem;
         }
 
         .section-header h2 {
-            font-size: 1.875rem;
-            color: #1e3a8a;
+            font-size: 2rem;
+            color: var(--primary-red);
             margin-bottom: 1rem;
         }
 
-        @media (min-width: 768px) {
-            .section-header h2 {
-                font-size: 2.25rem;
-            }
-        }
-
         .section-header p {
-            font-size: 1.125rem;
-            color: #4b5563;
-            max-width: 42rem;
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
             margin: 0 auto;
         }
 
@@ -428,7 +404,6 @@
             display: grid;
             grid-template-columns: 1fr;
             gap: 2rem;
-            margin-bottom: 4rem;
         }
 
         @media (min-width: 768px) {
@@ -438,128 +413,41 @@
         }
 
         .differential-card {
-            background-color: white;
-            border-radius: 0.75rem;
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
             transition: all 0.3s;
-            animation: fadeInUp 0.6s ease-out;
+            border: 2px solid transparent;
         }
 
         .differential-card:hover {
-            box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15);
-            transform: scale(1.05);
-        }
-
-        .differential-card img {
-            width: 100%;
-            height: 12rem;
-            object-fit: cover;
-            transition: transform 0.3s;
-        }
-
-        .differential-card:hover img {
-            transform: scale(1.1);
-        }
-
-        .differential-card-content {
-            padding: 1.5rem;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(196, 30, 58, 0.15);
+            border-color: var(--primary-red);
         }
 
         .differential-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 0.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            font-size: 3rem;
             margin-bottom: 1rem;
-            transition: transform 0.3s;
-        }
-
-        .differential-card:hover .differential-icon {
-            transform: scale(1.1);
-        }
-
-        .differential-icon svg {
-            width: 24px;
-            height: 24px;
-            color: white;
-        }
-
-        .icon-blue {
-            background: linear-gradient(135deg, #3b82f6, #1e40af);
-        }
-
-        .icon-orange {
-            background: linear-gradient(135deg, #ff9a56, #ff6b35);
-        }
-
-        .icon-yellow {
-            background: linear-gradient(135deg, #fbbf24, #f59e0b);
         }
 
         .differential-card h3 {
-            font-size: 1.25rem;
-            color: #1e3a8a;
+            color: var(--primary-red);
             margin-bottom: 0.75rem;
+            font-size: 1.25rem;
         }
 
         .differential-card p {
-            color: #4b5563;
+            color: #666;
             line-height: 1.6;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            margin-top: 4rem;
-            padding-top: 4rem;
-            border-top: 1px solid #e5e7eb;
-        }
-
-        @media (min-width: 768px) {
-            .stats-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
-
-        .stat-item {
-            text-align: center;
-            animation: fadeInUp 0.6s ease-out;
-        }
-
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #1e3a8a, #ff6b35);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 0.5rem;
-        }
-
-        @media (min-width: 768px) {
-            .stat-number {
-                font-size: 2.25rem;
-            }
-        }
-
-        .stat-label {
-            color: #4b5563;
         }
 
         /* Products Section */
         .products {
             padding: 4rem 0;
-            background-color: white;
-        }
-
-        @media (min-width: 768px) {
-            .products {
-                padding: 6rem 0;
-            }
+            background: white;
         }
 
         .filter-buttons {
@@ -571,27 +459,25 @@
         }
 
         .filter-btn {
-            padding: 0.5rem 1.5rem;
-            border-radius: 0.5rem;
-            font-weight: 500;
-            border: none;
+            padding: 0.75rem 1.5rem;
+            border: 2px solid #ddd;
+            background: white;
+            color: #333;
+            border-radius: 25px;
+            font-weight: 600;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.3s;
         }
 
         .filter-btn.active {
-            background-color: #ff6b35;
+            background: var(--primary-red);
             color: white;
-            box-shadow: 0 10px 15px rgba(255, 107, 53, 0.3);
+            border-color: var(--primary-red);
+            box-shadow: 0 4px 12px rgba(196, 30, 58, 0.3);
         }
 
-        .filter-btn:not(.active) {
-            background-color: #f3f4f6;
-            color: #374151;
-        }
-
-        .filter-btn:not(.active):hover {
-            background-color: #e5e7eb;
+        .filter-btn:hover {
+            border-color: var(--primary-red);
         }
 
         .products-grid {
@@ -613,27 +499,27 @@
         }
 
         .product-card {
-            background-color: white;
-            border-radius: 0.75rem;
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            background: white;
+            border-radius: 12px;
             overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
             transition: all 0.3s;
-            border: 1px solid #e5e7eb;
+            border: 2px solid transparent;
             display: flex;
             flex-direction: column;
-            animation: fadeInUp 0.6s ease-out;
         }
 
         .product-card:hover {
-            box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15);
-            border-color: #ff6b35;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(196, 30, 58, 0.15);
+            border-color: var(--primary-red);
         }
 
         .product-image {
             position: relative;
-            height: 16rem;
+            height: 200px;
+            background: var(--light-gray);
             overflow: hidden;
-            background-color: #f3f4f6;
         }
 
         .product-image img {
@@ -644,25 +530,25 @@
         }
 
         .product-card:hover .product-image img {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
 
         .product-badge {
             position: absolute;
             top: 1rem;
             right: 1rem;
-            background-color: #ff6b35;
+            background: var(--primary-red);
             color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            font-size: 0.875rem;
-            font-weight: 600;
-            animation: pulse-badge 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            animation: badge-pulse 2s infinite;
         }
 
-        @keyframes pulse-badge {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
+        @keyframes badge-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
         .product-content {
@@ -673,40 +559,15 @@
         }
 
         .product-name {
-            font-size: 1.25rem;
+            font-size: 1.1rem;
             font-weight: 700;
-            color: #1e3a8a;
+            color: var(--primary-red);
             margin-bottom: 0.5rem;
         }
 
-        .product-rating {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .stars {
-            display: flex;
-            gap: 0.25rem;
-        }
-
-        .star {
-            width: 16px;
-            height: 16px;
-            color: #fbbf24;
-        }
-
-        .star.empty {
-            color: #d1d5db;
-        }
-
-        .reviews {
-            font-size: 0.875rem;
-            color: #4b5563;
-        }
-
         .product-specs {
+            font-size: 0.9rem;
+            color: #666;
             margin-bottom: 1rem;
             flex: 1;
         }
@@ -715,53 +576,50 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            font-size: 0.875rem;
-            color: #4b5563;
             margin-bottom: 0.5rem;
         }
 
-        .spec-icon {
-            width: 14px;
-            height: 14px;
-            color: #ff6b35;
+        .spec-item::before {
+            content: '✓';
+            color: var(--primary-red);
+            font-weight: 700;
         }
 
         .product-price {
-            border-top: 1px solid #e5e7eb;
+            border-top: 2px solid var(--light-gray);
             padding-top: 1rem;
             margin-bottom: 1rem;
         }
 
         .price-current {
             font-size: 1.5rem;
-            font-weight: 700;
-            color: #ff6b35;
+            font-weight: 800;
+            color: var(--primary-red);
         }
 
         .price-original {
-            font-size: 0.875rem;
-            color: #9ca3af;
+            font-size: 0.9rem;
+            color: #999;
             text-decoration: line-through;
             margin-left: 0.5rem;
         }
 
         .product-card .btn-primary {
             width: 100%;
-            justify-content: center;
         }
 
         /* Footer */
         footer {
-            background-color: #1e3a8a;
+            background: var(--dark-bg);
             color: white;
-            padding: 3rem 0;
+            padding: 3rem 0 1rem;
         }
 
         .footer-content {
             display: grid;
             grid-template-columns: 1fr;
             gap: 2rem;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
         }
 
         @media (min-width: 768px) {
@@ -771,26 +629,27 @@
         }
 
         .footer-section h4 {
-            font-size: 1.125rem;
+            font-size: 1rem;
             margin-bottom: 1rem;
+            color: var(--accent-yellow);
         }
 
         .footer-section ul {
             list-style: none;
         }
 
-        .footer-section ul li {
-            margin-bottom: 0.5rem;
+        .footer-section li {
+            margin-bottom: 0.75rem;
         }
 
         .footer-section a {
-            color: #dbeafe;
+            color: #ccc;
             text-decoration: none;
             transition: color 0.3s;
         }
 
         .footer-section a:hover {
-            color: #ff6b35;
+            color: var(--accent-yellow);
         }
 
         .footer-contact {
@@ -801,90 +660,105 @@
         }
 
         .footer-contact-icon {
-            width: 20px;
-            height: 20px;
-            color: #ff6b35;
-            flex-shrink: 0;
+            font-size: 1.5rem;
             margin-top: 0.25rem;
         }
 
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .social-links a {
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.1);
-            transition: background-color 0.3s;
-        }
-
-        .social-links a:hover {
-            background-color: #ff6b35;
-        }
-
         .footer-divider {
-            border-top: 1px solid #1e40af;
+            border-top: 1px solid #333;
             margin: 2rem 0;
         }
 
         .footer-bottom {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
             text-align: center;
+            color: #999;
+            font-size: 0.9rem;
         }
 
-        @media (min-width: 768px) {
-            .footer-bottom {
-                flex-direction: row;
-                justify-content: space-between;
-                text-align: left;
-            }
+        /* Popup Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.3s;
         }
 
-        .footer-bottom p {
-            color: #dbeafe;
-            font-size: 0.875rem;
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
-        .footer-links {
+        .modal.show {
             display: flex;
-            gap: 1.5rem;
+            align-items: center;
             justify-content: center;
-            flex-wrap: wrap;
         }
 
-        @media (min-width: 768px) {
-            .footer-links {
-                justify-content: flex-end;
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            animation: slideUp 0.3s;
+            position: relative;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
             }
         }
 
-        .footer-links a {
-            color: #dbeafe;
-            font-size: 0.875rem;
-            text-decoration: none;
-            transition: color 0.3s;
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #999;
         }
 
-        .footer-links a:hover {
-            color: #ff6b35;
+        .modal-close:hover {
+            color: var(--primary-red);
         }
 
-        /* Utility Classes */
+        .modal h2 {
+            color: var(--primary-red);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .modal p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .modal .btn {
+            width: 100%;
+        }
+
+        /* Utility */
         .hidden {
             display: none;
         }
 
-        .visible {
-            display: block;
+        .text-center {
+            text-align: center;
         }
     </style>
 </head>
@@ -895,89 +769,66 @@
             <div class="header-content">
                 <div class="logo">
                     <div class="logo-icon">⚡</div>
-                    <div class="logo-text">
-                        <span>Baterias</span>
-                        <span>MOURA</span>
-                    </div>
+                    <span>BATERIAS MOURA</span>
                 </div>
 
                 <nav>
                     <a href="#produtos">Produtos</a>
                     <a href="#diferenciais">Diferenciais</a>
-                    <a href="#sobre">Sobre</a>
                     <a href="#contato">Contato</a>
                 </nav>
 
-                <a href="https://wa.me/551130905555?text=Olá!%20Baterias%20Moura,%20gostaria%20de%20algumas%20informações!" target="_blank" rel="noopener noreferrer" class="btn-primary" style="display: none;">
-                    <span>💬</span> WhatsApp
+                <a href="https://wa.me/551130905555?text=Olá%20Baterias%20Moura!%20Gostaria%20de%20um%20orçamento%20para%20bateria%20automotiva.%20Qual%20é%20o%20melhor%20horário?" class="header-cta" target="_blank">
+                    💬 WhatsApp
                 </a>
 
-                <button class="menu-toggle" id="menuToggle">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="3" y1="6" x2="21" y2="6"></line>
-                        <line x1="3" y1="12" x2="21" y2="12"></line>
-                        <line x1="3" y1="18" x2="21" y2="18"></line>
-                    </svg>
-                </button>
-            </div>
-
-            <div class="mobile-menu" id="mobileMenu">
-                <nav>
-                    <a href="#produtos">Produtos</a>
-                    <a href="#diferenciais">Diferenciais</a>
-                    <a href="#sobre">Sobre</a>
-                    <a href="#contato">Contato</a>
-                    <a href="https://wa.me/551130905555?text=Olá!%20Baterias%20Moura,%20gostaria%20de%20algumas%20informações!" target="_blank" rel="noopener noreferrer" class="btn-primary" style="width: 100%; justify-content: center;">
-                        <span>💬</span> WhatsApp
-                    </a>
-                </nav>
+                <button class="menu-toggle" id="menuToggle">☰</button>
             </div>
         </div>
     </header>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/551130905555?text=Olá%20Baterias%20Moura!%20Gostaria%20de%20um%20orçamento%20para%20bateria%20automotiva.%20Qual%20é%20o%20melhor%20horário?" class="whatsapp-float" target="_blank" title="Fale conosco no WhatsApp">
+        💬
+    </a>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <div class="hero-badge">
-                        <span>⚡</span>
-                        <span>Entrega e Instalação Rápida</span>
+                    <div class="urgency-badge">
+                        Entrega em até 50 minutos
                     </div>
 
-                    <h1>Sua Bateria em até <span class="accent">50 Minutos</span></h1>
+                    <h1>
+                        Sua Bateria
+                        <span class="highlight">HOJE MESMO</span>
+                    </h1>
 
-                    <p>Baterias de qualidade premium com entrega rápida e instalação profissional. Confie em quem conhece de energia!</p>
+                    <p class="hero-description">
+                        Baterias de qualidade premium com entrega rápida e instalação profissional. Confie em quem conhece de energia!
+                    </p>
 
-                    <div class="hero-buttons">
-                        <a href="https://wa.me/551130905555?text=Olá!%20Baterias%20Moura,%20gostaria%20de%20algumas%20informações!" target="_blank" rel="noopener noreferrer" class="btn-primary">
-                            Solicitar Orçamento
-                            <span>→</span>
+                    <div class="hero-benefits">
+                        <div class="benefit-item">Garantia 24 meses</div>
+                        <div class="benefit-item">Frete Grátis</div>
+                        <div class="benefit-item">Suporte 24/7</div>
+                        <div class="benefit-item">Instalação Grátis</div>
+                    </div>
+
+                    <div class="hero-cta-buttons">
+                        <a href="https://wa.me/551130905555?text=Olá%20Baterias%20Moura!%20Gostaria%20de%20um%20orçamento%20para%20bateria%20automotiva.%20Qual%20é%20o%20melhor%20horário?" class="btn btn-primary" target="_blank">
+                            💬 Solicitar Orçamento
                         </a>
-                        <button class="btn-outline" onclick="document.getElementById('produtos').scrollIntoView();">
-                            Ver Catálogo
+                        <button class="btn btn-secondary" onclick="document.getElementById('produtos').scrollIntoView();">
+                            📦 Ver Catálogo
                         </button>
-                    </div>
-
-                    <div class="hero-badges">
-                        <div class="badge-item">
-                            <div class="badge-check">✓</div>
-                            <span>Garantia 24 meses</span>
-                        </div>
-                        <div class="badge-item">
-                            <div class="badge-check">✓</div>
-                            <span>Frete Grátis</span>
-                        </div>
-                        <div class="badge-item">
-                            <div class="badge-check">✓</div>
-                            <span>Suporte 24/7</span>
-                        </div>
                     </div>
                 </div>
 
                 <div class="hero-image">
-                    <div class="hero-image-bg"></div>
-                    <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663080934225/KxvhUcvAcQuprvXeAefFJr/hero-battery-i26Bf6dW9oo79MA7faNpB8.webp" alt="Bateria Premium Moura">
+                    <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663080934225/KxvhUcvAcQuprvXeAefFJr/hero-battery-i26Bf6dW9oo79MA7faNpB8.webp" alt="Bateria Moura Premium">
                 </div>
             </div>
         </div>
@@ -987,71 +838,27 @@
     <section class="differentials" id="diferenciais">
         <div class="container">
             <div class="section-header">
-                <h2>Por Que Escolher a Baterias Moura?</h2>
-                <p>Somos especialistas em baterias automotivas com mais de 20 anos de experiência no mercado.</p>
+                <h2>Por Que Escolher Baterias Moura?</h2>
+                <p>Mais de 20 anos de experiência e confiança no mercado</p>
             </div>
 
             <div class="differentials-grid">
                 <div class="differential-card">
-                    <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663080934225/KxvhUcvAcQuprvXeAefFJr/fast-delivery-GApKSikzh8cmbJeXA5mfTB.webp" alt="Entrega Rápida">
-                    <div class="differential-card-content">
-                        <div class="differential-icon icon-blue">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="1" y="3" width="15" height="13"></rect>
-                                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
-                                <circle cx="5.5" cy="18.5" r="2.5"></circle>
-                                <circle cx="18.5" cy="18.5" r="2.5"></circle>
-                            </svg>
-                        </div>
-                        <h3>Entrega Rápida</h3>
-                        <p>Receba sua bateria em até 50 minutos. Somos rápidos porque sabemos que você não pode esperar.</p>
-                    </div>
+                    <div class="differential-icon">⚡</div>
+                    <h3>Entrega Rápida</h3>
+                    <p>Receba sua bateria em até 50 minutos. Somos rápidos porque você não pode esperar.</p>
                 </div>
 
                 <div class="differential-card">
-                    <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663080934225/KxvhUcvAcQuprvXeAefFJr/installation-service-Bj4hEHMXVtymaCjeuoZfPx.webp" alt="Instalação Profissional">
-                    <div class="differential-card-content">
-                        <div class="differential-icon icon-orange">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 1 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
-                            </svg>
-                        </div>
-                        <h3>Instalação Profissional</h3>
-                        <p>Nossos técnicos especializados instalam sua bateria com segurança e qualidade garantida.</p>
-                    </div>
+                    <div class="differential-icon">🔧</div>
+                    <h3>Instalação Profissional</h3>
+                    <p>Técnicos especializados instalam sua bateria com segurança e qualidade garantida.</p>
                 </div>
 
                 <div class="differential-card">
-                    <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663080934225/KxvhUcvAcQuprvXeAefFJr/quality-guarantee-m45HKoTCwDyfn2XSMPoXQE.webp" alt="Qualidade Garantida">
-                    <div class="differential-card-content">
-                        <div class="differential-icon icon-yellow">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                                <polyline points="9 12 12 15 15 9"></polyline>
-                            </svg>
-                        </div>
-                        <h3>Qualidade Garantida</h3>
-                        <p>Baterias de marcas confiáveis com garantia de 24 meses. Seu carro merece o melhor.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-number">20+</div>
-                    <div class="stat-label">Anos de Experiência</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">50k+</div>
-                    <div class="stat-label">Clientes Satisfeitos</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">Garantia de Qualidade</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">24/7</div>
-                    <div class="stat-label">Suporte ao Cliente</div>
+                    <div class="differential-icon">🛡️</div>
+                    <h3>Qualidade Garantida</h3>
+                    <p>Baterias de marcas confiáveis com garantia de 24 meses. Seu carro merece o melhor.</p>
                 </div>
             </div>
         </div>
@@ -1062,40 +869,29 @@
         <div class="container">
             <div class="section-header">
                 <h2>Nosso Catálogo de Baterias</h2>
-                <p>Escolha a bateria perfeita para seu veículo. Todas com garantia e entrega rápida.</p>
+                <p>Escolha a bateria perfeita para seu veículo</p>
             </div>
 
             <div class="filter-buttons">
-                <button class="filter-btn active" onclick="filterProducts('all')">Todos os Produtos</button>
+                <button class="filter-btn active" onclick="filterProducts('all')">Todos</button>
                 <button class="filter-btn" onclick="filterProducts('premium')">Premium</button>
                 <button class="filter-btn" onclick="filterProducts('standard')">Standard</button>
                 <button class="filter-btn" onclick="filterProducts('economy')">Econômica</button>
             </div>
 
             <div class="products-grid" id="productsGrid">
-                <!-- Products will be inserted here by JavaScript -->
+                <!-- Products will be inserted here -->
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer id="contato">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <div class="logo" style="margin-bottom: 1rem;">
-                        <div class="logo-icon">⚡</div>
-                        <div class="logo-text">
-                            <span>Baterias</span>
-                            <span>MOURA</span>
-                        </div>
-                    </div>
-                    <p style="color: #dbeafe; margin-bottom: 1rem;">Sua bateria em até 50 minutos. Entrega rápida e instalação profissional.</p>
-                    <div class="social-links">
-                        <a href="#" title="Facebook">f</a>
-                        <a href="#" title="Instagram">📷</a>
-                        <a href="#" title="Twitter">𝕏</a>
-                    </div>
+                    <h4>Baterias Moura</h4>
+                    <p style="color: #ccc; margin-bottom: 1rem;">Sua bateria em até 50 minutos. Entrega rápida e instalação profissional.</p>
                 </div>
 
                 <div class="footer-section">
@@ -1103,8 +899,7 @@
                     <ul>
                         <li><a href="#produtos">Produtos</a></li>
                         <li><a href="#diferenciais">Diferenciais</a></li>
-                        <li><a href="#sobre">Sobre Nós</a></li>
-                        <li><a href="#contato">Blog</a></li>
+                        <li><a href="#contato">Contato</a></li>
                     </ul>
                 </div>
 
@@ -1121,27 +916,15 @@
                 <div class="footer-section">
                     <h4>Contato</h4>
                     <div class="footer-contact">
-                        <svg class="footer-contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                        </svg>
+                        <span class="footer-contact-icon">📱</span>
                         <div>
                             <p style="font-weight: 600;">(11) 3090-5555</p>
-                            <p style="font-size: 0.875rem; color: #dbeafe;">Seg-Sex: 8h-18h</p>
+                            <p style="font-size: 0.9rem; color: #999;">Seg-Sex: 8h-18h</p>
                         </div>
                     </div>
                     <div class="footer-contact">
-                        <svg class="footer-contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                            <polyline points="22,6 12,13 2,6"></polyline>
-                        </svg>
-                        <p style="color: #dbeafe;">contato@bateriasmoura.com.br</p>
-                    </div>
-                    <div class="footer-contact">
-                        <svg class="footer-contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                            <circle cx="12" cy="10" r="3"></circle>
-                        </svg>
-                        <p style="color: #dbeafe;">São Paulo, SP - Brasil</p>
+                        <span class="footer-contact-icon">💬</span>
+                        <a href="https://wa.me/551130905555" target="_blank" style="color: #25d366; font-weight: 600;">WhatsApp</a>
                     </div>
                 </div>
             </div>
@@ -1150,32 +933,24 @@
 
             <div class="footer-bottom">
                 <p>&copy; 2024 Baterias Moura. Todos os direitos reservados.</p>
-                <div class="footer-links">
-                    <a href="#">Política de Privacidade</a>
-                    <a href="#">Termos de Serviço</a>
-                    <a href="#">Cookies</a>
-                </div>
             </div>
         </div>
     </footer>
 
+    <!-- Popup Modal -->
+    <div class="modal" id="promoModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">✕</button>
+            <h2>🎉 Oferta Especial!</h2>
+            <p>Aproveite <strong>10% de desconto</strong> em sua primeira compra!</p>
+            <p style="font-size: 0.9rem; color: #999;">Válido apenas para os próximos 24 horas</p>
+            <a href="https://wa.me/551130905555?text=Olá%20Baterias%20Moura!%20Gostaria%20de%20aproveitar%20a%20oferta%20especial%20de%2010%25%20de%20desconto!" class="btn btn-primary" target="_blank">
+                💬 Aproveitar Oferta
+            </a>
+        </div>
+    </div>
+
     <script>
-        // Menu Toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const mobileMenu = document.getElementById('mobileMenu');
-
-        menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
-        });
-
-        // Close menu when clicking a link
-        const menuLinks = mobileMenu.querySelectorAll('a');
-        menuLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-            });
-        });
-
         // Products Data
         const products = [
             {
@@ -1184,11 +959,8 @@
                 category: 'premium',
                 price: 'R$ 599,90',
                 originalPrice: 'R$ 799,90',
-                rating: 5,
-                reviews: 234,
-                image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663080934225/KxvhUcvAcQuprvXeAefFJr/hero-battery-i26Bf6dW9oo79MA7faNpB8.webp',
                 specs: ['60Ah', '24 meses garantia', 'Entrega em 50 min'],
-                badge: 'Promoção'
+                badge: '🔥 Promoção'
             },
             {
                 id: 2,
@@ -1196,11 +968,8 @@
                 category: 'standard',
                 price: 'R$ 399,90',
                 originalPrice: 'R$ 499,90',
-                rating: 4,
-                reviews: 156,
-                image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663080934225/KxvhUcvAcQuprvXeAefFJr/hero-battery-i26Bf6dW9oo79MA7faNpB8.webp',
                 specs: ['50Ah', '12 meses garantia', 'Entrega em 50 min'],
-                badge: 'Popular'
+                badge: '⭐ Popular'
             },
             {
                 id: 3,
@@ -1208,11 +977,8 @@
                 category: 'economy',
                 price: 'R$ 279,90',
                 originalPrice: 'R$ 349,90',
-                rating: 4,
-                reviews: 89,
-                image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663080934225/KxvhUcvAcQuprvXeAefFJr/hero-battery-i26Bf6dW9oo79MA7faNpB8.webp',
                 specs: ['40Ah', '6 meses garantia', 'Entrega em 50 min'],
-                badge: 'Econômica'
+                badge: '💰 Econômica'
             },
             {
                 id: 4,
@@ -1220,11 +986,8 @@
                 category: 'premium',
                 price: 'R$ 899,90',
                 originalPrice: 'R$ 1.199,90',
-                rating: 5,
-                reviews: 312,
-                image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663080934225/KxvhUcvAcQuprvXeAefFJr/hero-battery-i26Bf6dW9oo79MA7faNpB8.webp',
                 specs: ['75Ah', '36 meses garantia', 'Entrega em 50 min'],
-                badge: 'Topo de Linha'
+                badge: '👑 Topo'
             },
             {
                 id: 5,
@@ -1232,11 +995,8 @@
                 category: 'standard',
                 price: 'R$ 449,90',
                 originalPrice: 'R$ 599,90',
-                rating: 4,
-                reviews: 201,
-                image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663080934225/KxvhUcvAcQuprvXeAefFJr/hero-battery-i26Bf6dW9oo79MA7faNpB8.webp',
                 specs: ['55Ah', '18 meses garantia', 'Entrega em 50 min'],
-                badge: 'Destaque'
+                badge: '✨ Destaque'
             },
             {
                 id: 6,
@@ -1244,58 +1004,34 @@
                 category: 'economy',
                 price: 'R$ 329,90',
                 originalPrice: 'R$ 429,90',
-                rating: 4,
-                reviews: 145,
-                image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663080934225/KxvhUcvAcQuprvXeAefFJr/hero-battery-i26Bf6dW9oo79MA7faNpB8.webp',
                 specs: ['45Ah', '12 meses garantia', 'Entrega em 50 min'],
-                badge: 'Oferta'
+                badge: '🎯 Oferta'
             }
         ];
 
         let currentFilter = 'all';
 
         function renderProducts(filter = 'all') {
-            const productsGrid = document.getElementById('productsGrid');
+            const grid = document.getElementById('productsGrid');
             const filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
 
-            productsGrid.innerHTML = filtered.map(product => `
+            grid.innerHTML = filtered.map(product => `
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="${product.image}" alt="${product.name}">
+                        <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663080934225/KxvhUcvAcQuprvXeAefFJr/hero-battery-i26Bf6dW9oo79MA7faNpB8.webp" alt="${product.name}">
                         <div class="product-badge">${product.badge}</div>
                     </div>
                     <div class="product-content">
                         <h3 class="product-name">${product.name}</h3>
-                        
-                        <div class="product-rating">
-                            <div class="stars">
-                                ${Array(5).fill(0).map((_, i) => `
-                                    <svg class="star ${i < product.rating ? '' : 'empty'}" viewBox="0 0 24 24" fill="currentColor">
-                                        <polygon points="12 2 15.09 10.26 23.77 10.36 17.13 16.01 19.09 24.29 12 18.54 4.91 24.29 6.87 16.01 0.23 10.36 8.91 10.26"></polygon>
-                                    </svg>
-                                `).join('')}
-                            </div>
-                            <span class="reviews">(${product.reviews})</span>
-                        </div>
-
                         <div class="product-specs">
-                            ${product.specs.map(spec => `
-                                <div class="spec-item">
-                                    <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path>
-                                    </svg>
-                                    ${spec}
-                                </div>
-                            `).join('')}
+                            ${product.specs.map(spec => `<div class="spec-item">${spec}</div>`).join('')}
                         </div>
-
                         <div class="product-price">
                             <span class="price-current">${product.price}</span>
                             <span class="price-original">${product.originalPrice}</span>
                         </div>
-
-                        <a href="https://wa.me/551130905555?text=Olá!%20Baterias%20Moura,%20gostaria%20de%20mais%20informações%20sobre%20este%20produto!" target="_blank" rel="noopener noreferrer" class="btn-primary">
-                            <span>🛒</span> Comprar Agora
+                        <a href="https://wa.me/551130905555?text=Olá%20Baterias%20Moura!%20Tenho%20interesse%20na%20bateria%20${encodeURIComponent(product.name)}%20por%20${encodeURIComponent(product.price)}.%20Qual%20é%20o%20tempo%20de%20entrega?" class="btn btn-primary" target="_blank">
+                            💬 Comprar Agora
                         </a>
                     </div>
                 </div>
@@ -1304,38 +1040,30 @@
 
         function filterProducts(category) {
             currentFilter = category;
-            
-            // Update active button
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
-
             renderProducts(category);
+        }
+
+        function closeModal() {
+            document.getElementById('promoModal').classList.remove('show');
         }
 
         // Initial render
         renderProducts();
 
-        // Intersection Observer for fade-in animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+        // Show promo modal after 5 seconds
+        setTimeout(() => {
+            document.getElementById('promoModal').classList.add('show');
+        }, 5000);
 
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards';
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        // Observe all fade-in elements
-        document.querySelectorAll('.differential-card, .product-card, .stat-item').forEach(el => {
-            observer.observe(el);
-        });
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('promoModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
     </script>
 </body>
 </html>
