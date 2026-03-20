@@ -193,6 +193,12 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            animation: pulse-urgency 2s infinite;
+        }
+
+        @keyframes pulse-urgency {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
         }
 
         .hero-urgency i {
@@ -335,6 +341,42 @@
             color: #666;
             font-size: 14px;
             font-weight: 500;
+        }
+
+        /* ===== QUICK CTA BANNER ===== */
+        .quick-cta {
+            background: linear-gradient(90deg, var(--whatsapp-green) 0%, #20ba5a 100%);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            position: sticky;
+            top: 80px;
+            z-index: 99;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+        }
+
+        .quick-cta-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .quick-cta-text {
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .quick-cta .btn {
+            padding: 10px 20px;
+            font-size: 14px;
+            background: white;
+            color: var(--whatsapp-green);
+        }
+
+        .quick-cta .btn:hover {
+            transform: scale(1.05);
         }
 
         /* ===== LEAD CAPTURE FORM ===== */
@@ -525,6 +567,7 @@
             border-radius: 12px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             transition: all 0.3s ease;
+            border-left: 4px solid var(--whatsapp-green);
         }
 
         .testimonial-card:hover {
@@ -849,6 +892,15 @@
                 flex-direction: column;
                 gap: 15px;
             }
+
+            .quick-cta-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .quick-cta-text {
+                font-size: 14px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -868,6 +920,10 @@
             .hero-trust {
                 flex-direction: column;
                 gap: 10px;
+            }
+
+            .quick-cta {
+                padding: 15px 0;
             }
         }
     </style>
@@ -899,6 +955,20 @@
             </div>
         </div>
     </header>
+
+    <!-- Quick CTA Banner - NOVO ELEMENTO PARA CONVERSÃO -->
+    <div class="quick-cta" id="quickCta">
+        <div class="container">
+            <div class="quick-cta-content">
+                <span class="quick-cta-text">
+                    <i class="fas fa-clock"></i> Entrega em 50 minutos - Fale agora!
+                </span>
+                <a href="https://wa.me/558733333333?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20as%20baterias%20Moura." target="_blank" class="btn">
+                    <i class="fab fa-whatsapp"></i> Conversar
+                </a>
+            </div>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -939,7 +1009,7 @@
                     </div>
                 </div>
                 <div class="hero-image">
-                    <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663285665352/NbEMemEtbiN2WtJF47k23x/hero-bateria-TVccATxWtuodigvA3m4ja8.webp" alt="Bateria Moura Premium">
+                    <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663285665352/laNdJQyyLffrydZU.png" alt="Bateria Moura Premium">
                 </div>
             </div>
         </div>
@@ -1198,6 +1268,19 @@
             });
         });
 
+        // Hide quick CTA banner when scrolling down
+        let lastScrollTop = 0;
+        const quickCta = document.getElementById('quickCta');
+        window.addEventListener('scroll', () => {
+            let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+            if (currentScroll > 300) {
+                quickCta.style.display = 'none';
+            } else {
+                quickCta.style.display = 'block';
+            }
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+        });
+
         // Modal Functions
         function openLeadModal() {
             document.getElementById('leadModal').classList.add('active');
@@ -1288,10 +1371,10 @@
             observer.observe(el);
         });
 
-        // Show modal after 15 seconds (opcional - descomente se quiser)
+        // Show modal after 25 seconds (opcional - descomente se quiser)
         // setTimeout(() => {
         //     openLeadModal();
-        // }, 15000);
+        // }, 25000);
     </script>
 </body>
 </html>
