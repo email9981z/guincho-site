@@ -68,22 +68,21 @@
         }
 
         .logo-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--primary-blue) 0%, #0052cc 100%);
-            border-radius: 8px;
+            width: auto;
+            height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 24px;
+        }
+
+        .logo-icon img {
+            height: 100%;
+            width: auto;
+            max-width: 300px;
         }
 
         .logo-text {
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--dark-gray);
+            display: none;
         }
 
         .header-actions {
@@ -879,8 +878,9 @@
         <div class="container">
             <div class="header-content">
                 <a href="#" class="logo">
-                    <div class="logo-icon">M</div>
-                    <span class="logo-text">MOURA</span>
+                    <div class="logo-icon">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Moura_Baterias_Logo.svg/1200px-Moura_Baterias_Logo.svg.png" alt="Moura Logo" style="height: 50px; width: auto;">
+                    </div>
                 </a>
                 <button class="menu-toggle" id="menuToggle">
                     <i class="fas fa-bars"></i>
@@ -1288,11 +1288,10 @@
             observer.observe(el);
         });
 
-        // Show modal after 15 seconds (optional)
-        setTimeout(() => {
-            // Descomente a linha abaixo para mostrar modal automaticamente
-            // openLeadModal();
-        }, 15000);
+        // Show modal after 15 seconds (opcional - descomente se quiser)
+        // setTimeout(() => {
+        //     openLeadModal();
+        // }, 15000);
     </script>
 </body>
 </html>
