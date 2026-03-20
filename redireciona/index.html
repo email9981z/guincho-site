@@ -852,6 +852,73 @@
             }
         }
     
+    
+        /* Mobile Reordering for Hero Section */
+        @media (max-width: 768px) {
+            .hero-content {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+                padding-top: 1rem !important;
+            }
+            
+            .hero-text {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                order: 1 !important;
+            }
+            
+            .hero-badge {
+                order: 1 !important;
+                margin-bottom: 0.5rem !important;
+            }
+            
+            .hero h1 {
+                order: 2 !important;
+                font-size: 1.8rem !important;
+                margin-bottom: 1rem !important;
+            }
+            
+            /* Movemos a imagem para dentro do fluxo do texto no mobile */
+            .hero-image {
+                order: 3 !important;
+                display: block !important;
+                margin: 1rem auto !important;
+                width: 80% !important;
+                max-width: 220px !important;
+                position: relative !important;
+            }
+            
+            .hero p {
+                order: 4 !important;
+                font-size: 1rem !important;
+                margin-bottom: 1.5rem !important;
+            }
+            
+            .hero-buttons {
+                order: 5 !important;
+                width: 100% !important;
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 0.75rem !important;
+            }
+            
+            .btn-primary, .btn-outline {
+                width: 100% !important;
+                justify-content: center !important;
+            }
+            
+            .free-service-badge {
+                top: -15px !important;
+                left: -10px !important;
+                padding: 8px 12px !important;
+                transform: scale(0.8) !important;
+                white-space: nowrap !important;
+            }
+        }
+    
     </style>
 </head>
 <body>
@@ -860,7 +927,7 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <img src="https://www.moura.com.br/_next/image?url=%2Fassets%2Fimgs%2Fcommon%2Flogo-moura.webp&w=256&q=75" alt="Baterias Moura" style="height: 40px; width: auto;">
+                    <img src="https://logodownload.org/wp-content/uploads/2018/09/moura-logo-baterias.png" alt="Baterias Moura" style="height: 40px; width: auto;">
                 </div>
 
                 <nav>
@@ -1034,7 +1101,7 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <div class="logo" style="margin-bottom: 1rem;">
-                        <img src="https://www.moura.com.br/_next/image?url=%2Fassets%2Fimgs%2Fcommon%2Flogo-moura.webp&w=256&q=75" alt="Baterias Moura" style="height: 40px; width: auto;">
+                        <img src="https://logodownload.org/wp-content/uploads/2018/09/moura-logo-baterias.png" alt="Baterias Moura" style="height: 40px; width: auto;">
                     </div>
                     <p style="color: #dbeafe; margin-bottom: 1rem;">Sua bateria em até 50 minutos. Entrega rápida e instalação profissional.</p>
                     <div class="social-links">
